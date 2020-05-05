@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Enterprises;
+use App\Enterprise;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EnterpriseResource;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class EnterprisesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Resources\Json\JsonResource
+     * @return JsonResource
      */
     public function index()
     {
-        return new EnterpriseResource(Enterprises::all());
+        return new EnterpriseResource(Enterprise::all());
     }
 
     /**
@@ -33,10 +34,10 @@ class EnterprisesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Enterprises  $enterprises
+     * @param  \App\Enterprise  $enterprises
      * @return \Illuminate\Http\Response
      */
-    public function show(Enterprises $enterprises)
+    public function show(Enterprise $enterprises)
     {
         //
     }
@@ -45,10 +46,10 @@ class EnterprisesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Enterprises  $enterprises
+     * @param  \App\Enterprise  $enterprises
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Enterprises $enterprises)
+    public function update(Request $request, Enterprise $enterprises)
     {
         //
     }
@@ -56,10 +57,10 @@ class EnterprisesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Enterprises  $enterprises
+     * @param  \App\Enterprise  $enterprises
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Enterprises $enterprises)
+    public function destroy(Enterprise $enterprises)
     {
         //
     }
