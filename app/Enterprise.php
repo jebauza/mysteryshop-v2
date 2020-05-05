@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Enterprises extends Model
+class Enterprise extends Model
 {
     /**
      * The attributes that are mass assignable.

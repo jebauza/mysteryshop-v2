@@ -5,8 +5,9 @@
 use App\Enterprise;
 use Faker\Generator as Faker;
 
-$factory->define(Enterprise::class, function (Faker $faker) {
+$factory->define(\App\Enterprise::class, function (Faker $faker) {
     return [
-        //
+        'name' => $faker->company,
+        'address' => $faker->address,
     ];
 });

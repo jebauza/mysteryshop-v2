@@ -4,11 +4,13 @@ namespace App\Http\Controllers\API;
 
 use App\Enterprise;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreEnterpriseRequest;
+use App\Http\Requests\updateEnterpriseResquest;
 use App\Http\Resources\EnterpriseResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class EnterprisesController extends Controller
+class EnterpriseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,47 +19,51 @@ class EnterprisesController extends Controller
      */
     public function index()
     {
-        return new EnterpriseResource(Enterprise::all());
+        return EnterpriseResource::collection(Enterprise::all());
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return JsonResource
      */
-    public function store(Request $request)
+    public function store(StoreEnterpriseRequest $request)
     {
-        //
+        $enterprise = Enterprise::create($request->all());
+
+        return new EnterpriseResource($enterprise);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Enterprise  $enterprises
-     * @return \Illuminate\Http\Response
+     * @param \App\Enterprise $enterprises
+     * @return JsonResource
      */
     public function show(Enterprise $enterprises)
     {
-        //
+        return new EnterpriseResource($enterprises);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Enterprise  $enterprises
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Enterprise $enterprises
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Enterprise $enterprises)
+    public function update(updateEnterpriseResquest $request, Enterprise $enterprises)
     {
-        //
+        $enterprises->fill($request->all())->save();
+
+        return new EnterpriseResource($enterprises);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Enterprise  $enterprises
+     * @param \App\Enterprise $enterprises
      * @return \Illuminate\Http\Response
      */
     public function destroy(Enterprise $enterprises)
