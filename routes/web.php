@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::apiResources([
-    'enterprises' => 'Api\EnterpriseController',
+    'enterprises' => 'EnterpriseController',
 ]);
 
 Route::get('/home', 'HomeController@index')->name('home');
