@@ -9,6 +9,7 @@ use App\Http\Resources\EnterpriseResource;
 use App\Http\Requests\StoreEnterpriseRequest;
 use App\Http\Requests\updateEnterpriseResquest;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Response;
 
 class EnterpriseController extends Controller
 {
@@ -51,7 +52,7 @@ class EnterpriseController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Enterprise $enterprises
-     * @return \Illuminate\Http\Response
+     * @return JsonResource
      */
     public function update(updateEnterpriseResquest $request, Enterprise $enterprises)
     {
@@ -68,6 +69,6 @@ class EnterpriseController extends Controller
      */
     public function destroy(Enterprise $enterprises)
     {
-        //
+       return new Response($enterprises->delete());
     }
 }
