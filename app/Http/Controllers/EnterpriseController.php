@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
-use App\Enterprise;
+use App\Models\Enterprise;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EnterpriseResource;
 use App\Http\Requests\StoreEnterpriseRequest;
 use App\Http\Requests\updateEnterpriseResquest;
-use App\Http\Resources\EnterpriseResource;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class EnterpriseController extends Controller

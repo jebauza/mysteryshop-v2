@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Enterprise;
+use App\Models\Enterprise;
 use Faker\Generator as Faker;
 
-$factory->define(\App\Enterprise::class, function (Faker $faker) {
+$factory->define(Enterprise::class, function (Faker $faker) {
     return [
         'name' => $faker->company,
         'address' => $faker->address,
