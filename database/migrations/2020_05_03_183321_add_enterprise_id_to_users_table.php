@@ -15,7 +15,9 @@ class AddEnterpriseIdToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('enterprise_id')->after('id');
-            $table->foreign('enterprise_id')->references('id')->on('enterprises')->onDelete('cascade');
+            $table->foreign('enterprise_id')
+                ->references('id')
+                ->on('enterprises');
         });
     }
 

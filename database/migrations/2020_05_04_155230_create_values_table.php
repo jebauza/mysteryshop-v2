@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIndicatorValuesTable extends Migration
+class CreateValuesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateIndicatorValuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('indicator_values', function (Blueprint $table) {
+        Schema::create('values', function (Blueprint $table) {
             $table->id();
             $table->integer('value');
             $table->text('description');
             $table->unsignedBigInteger('indicator_id');
             $table->foreign('indicator_id')
                 ->references('id')
-                ->on('indicators')
-                ->onDelete('cascade');
+                ->on('indicators');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ class CreateIndicatorValuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('indicator_values');
+        Schema::dropIfExists('values');
     }
 }

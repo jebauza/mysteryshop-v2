@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Enterprises;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EnterpriseResource;
 use Illuminate\Http\Request;
 
 class EnterprisesController extends Controller
@@ -11,11 +12,11 @@ class EnterprisesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\JsonResource
      */
     public function index()
     {
-        //
+        return new EnterpriseResource(Enterprises::all());
     }
 
     /**

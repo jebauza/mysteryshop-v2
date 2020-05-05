@@ -15,6 +15,14 @@ class CreateSurveyIndicatorTable extends Migration
     {
         Schema::create('survey_indicator', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('indicator_id');
+            $table->foreign('indicator_id')
+                ->references('id')
+                ->on('indicators');
+            $table->unsignedBigInteger('survey_id');
+            $table->foreign('survey_id')
+                ->references('id')
+                ->on('surveys');
             $table->timestamps();
         });
     }

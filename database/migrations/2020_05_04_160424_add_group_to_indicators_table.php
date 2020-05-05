@@ -14,7 +14,10 @@ class AddGroupToIndicatorsTable extends Migration
     public function up()
     {
         Schema::table('indicators', function (Blueprint $table) {
-            //
+            $table->unsignedBigInteger('indicator_group_id')->nullable();
+            $table->foreign('indicator_group_id')
+                ->references('id')
+                ->on('indicator_groups');
         });
     }
 
@@ -25,8 +28,10 @@ class AddGroupToIndicatorsTable extends Migration
      */
     public function down()
     {
+
         Schema::table('indicators', function (Blueprint $table) {
-            //
+            $table->dropForeign(['indicator_group_id']);
+            $table->dropColumn('indicator_group_id');
         });
     }
 }

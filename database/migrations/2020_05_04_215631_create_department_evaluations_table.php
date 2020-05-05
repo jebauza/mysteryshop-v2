@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSurveyDepartmentTable extends Migration
+class CreateDepartmentEvaluationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,21 @@ class CreateSurveyDepartmentTable extends Migration
      */
     public function up()
     {
-        Schema::create('evaluation_department', function (Blueprint $table) {
+        Schema::create('department_evaluations', function (Blueprint $table) {
             $table->id();
-
+            $table->date('date');
+            $table->time('time');
+            $table->text('comment');
+            $table->string('employee_name');
             $table->unsignedBigInteger('department_id');
             $table->foreign('department_id')
                 ->references('id')
-                ->on('departments')
-                ->onDelete('cascade');
+                ->on('departments');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+
 
             $table->timestamps();
         });
@@ -33,6 +40,6 @@ class CreateSurveyDepartmentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('evaluation_department');
+        Schema::dropIfExists('department_evaluations');
     }
 }

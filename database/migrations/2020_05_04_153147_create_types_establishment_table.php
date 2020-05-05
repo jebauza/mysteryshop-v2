@@ -15,6 +15,7 @@ class CreateTypesEstablishmentTable extends Migration
     {
         Schema::create('types_establishment', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }

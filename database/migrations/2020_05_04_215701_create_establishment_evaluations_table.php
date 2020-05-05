@@ -19,8 +19,15 @@ class CreateEstablishmentEvaluationsTable extends Migration
             $table->time('time');
             $table->text('comment');
             $table->string('employee_name');
-            $table->unsignedBigInteger('indicator_id');
-          
+            $table->unsignedBigInteger('establishment_id');
+            $table->foreign('establishment_id')
+                ->references('id')
+                ->on('establishments');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+
             $table->timestamps();
         });
     }
