@@ -16,9 +16,9 @@ class Client extends Model
         return $this->belongsTo(Enterprise::class, 'enterprise_id', 'id');
     }
 
-    /* public function establishments()
+    public function establishments()
     {
-        return $this->hasMany('App\Comment', 'foreign_key', 'local_key');
-    } */
+        /**TODO realacion with establishments*/
+    }
 
 }
