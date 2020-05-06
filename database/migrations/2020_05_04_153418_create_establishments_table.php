@@ -17,10 +17,10 @@ class CreateEstablishmentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->unsignedBigInteger('type_establishment_id');
-            $table->foreign('type_establishment_id')
+            $table->unsignedBigInteger('establishment_type_id');
+            $table->foreign('establishment_type_id')
                 ->references('id')
-                ->on('types_establishment');
+                ->on('establishment_types');
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')
                 ->references('id')
