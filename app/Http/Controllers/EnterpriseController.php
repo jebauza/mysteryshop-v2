@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Enterprise;
+use Illuminate\Http\Response;
 use App\Http\Resources\EnterpriseResource;
 use App\Http\Requests\StoreEnterpriseRequest;
-use App\Http\Requests\updateEnterpriseResquest;
+use App\Http\Requests\UpdateEnterpriseResquest;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Http\Response;
 
 class EnterpriseController extends Controller
 {
@@ -52,7 +52,7 @@ class EnterpriseController extends Controller
      * @param \App\Models\Enterprise $enterprises
      * @return JsonResource
      */
-    public function update(updateEnterpriseResquest $request, Enterprise $enterprises)
+    public function update(UpdateEnterpriseResquest $request, Enterprise $enterprises)
     {
         $enterprises->fill($request->all())->save();
 
