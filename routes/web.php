@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::apiResources([
     'enterprises' => 'EnterpriseController',
+
+    'establishment_types' => 'EstablishmentTypeController',
 ]);
 
 Route::get('/home', 'HomeController@index')->name('home');

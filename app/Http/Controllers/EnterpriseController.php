@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Enterprise;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Resources\EnterpriseResource;
 use App\Http\Requests\StoreEnterpriseRequest;
 use App\Http\Requests\updateEnterpriseResquest;
@@ -39,7 +37,7 @@ class EnterpriseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Enterprise $enterprises
+     * @param \App\Models\Enterprise $enterprises
      * @return JsonResource
      */
     public function show(Enterprise $enterprises)
@@ -51,7 +49,7 @@ class EnterpriseController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Enterprise $enterprises
+     * @param \App\Models\Enterprise $enterprises
      * @return JsonResource
      */
     public function update(updateEnterpriseResquest $request, Enterprise $enterprises)
@@ -64,7 +62,7 @@ class EnterpriseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Enterprise $enterprises
+     * @param \App\Models\Enterprise $enterprises
      * @return \Illuminate\Http\Response
      */
     public function destroy(Enterprise $enterprises)

@@ -1,10 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class EstablishmentType extends Model
 {
-    //
+    protected $fillable = [
+        'name'
+    ];
+
+    public function establishments()
+    {
+        /*TODO relation*/
+    }
 }

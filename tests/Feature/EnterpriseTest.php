@@ -44,7 +44,7 @@ class EnterpriseTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $enterprise = factory(Enterprise::class)->create();
+        $enterprise = factory(Enterprise::class)->make();
         $response = $this->actingAs($user)
             ->postJson(route('enterprises.store'), [
             'name' => $enterprise->name,

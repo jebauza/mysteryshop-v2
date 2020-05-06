@@ -2,11 +2,11 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\EstablishmentTypes;
+use App\Models\EstablishmentType;
 use Faker\Generator as Faker;
 
-$factory->define(EstablishmentTypes::class, function (Faker $faker) {
+$factory->define(EstablishmentType::class, function (Faker $faker) {
     return [
-        //
+        'name' => $faker->word,
     ];
 });
