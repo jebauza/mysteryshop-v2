@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use App\Http\Resources\ClientResource;
 
 class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResource
      */
     public function index()
     {
-        //
+        return ClientResource::collection(Client::all());
     }
 
     /**
@@ -25,7 +26,9 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newClient = Client::create($request->all());
+
+        return new ClientResource($newClient);
     }
 
     /**
