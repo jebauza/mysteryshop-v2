@@ -29,7 +29,7 @@ class StoreClientRequest extends FormRequest
             'name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'contract_number' => 'required|string|max:255',
-            'enterprise_id' => 'required|integer|exists:enterprises'
+            'enterprise_id' => 'required|integer|exists:enterprises,id'
         ];
     }
 }
