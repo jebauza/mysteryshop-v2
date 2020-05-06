@@ -79,4 +79,22 @@ class ClientTest extends TestCase
         $response->assertStatus(201)
             ->assertJsonStructure(['data']);
     }
+
+    /**
+     * @return void
+     */
+    public function test_it_can_destroy()
+    {
+        $this->withoutExceptionHandling();
+        $user = factory(User::class)->create();
+        $client = factory(Client::class)->create([
+            'enterprise_id' => factory(Enterprise::class)->create()->id
+        ]);
+
+        $response = $this->actingAs($user)
+            ->deleteJson(route('clients.destroy',$client->id));
+
+        $response->assertStatus(200)
+            ->assertJsonStructure(['messenge']);
+    }
 }
