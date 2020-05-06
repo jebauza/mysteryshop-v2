@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::apiResources([
     'enterprises' => 'EnterpriseController',
-
+    'clients' => 'ClientController',
     'establishment_types' => 'EstablishmentTypeController',
 ]);
 
