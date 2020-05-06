@@ -39,7 +39,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        //
+        return new ClientResource($client);
     }
 
     /**
@@ -51,7 +51,9 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        $client->fill($request->all())->save();
+
+        return new ClientResource($client);
     }
 
     /**
