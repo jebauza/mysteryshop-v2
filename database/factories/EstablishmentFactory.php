@@ -11,7 +11,7 @@ $factory->define(Establishment::class, function (Faker $faker) {
     return [
         'name' => $faker->company,
         'address' => $faker->address,
-        'establishment_type_id' => factory(EstablishmentType::class),
-        'client_id' => factory(Client::class)->states('withEnterprise')
+        'establishment_type_id' => factory(EstablishmentType::class)->create()->id,
+        'client_id' => factory(Client::class)
     ];
 });

@@ -44,7 +44,7 @@ class DepartmentTest extends TestCase
      */
     public function test_it_can_show()
     {
-        $departament = factory(Department::class)->states('withEstablishment')->create();
+        $departament = factory(Department::class)->create();
            
         $response = $this->getJson(route('departments.show', $departament->id));
         $response->assertStatus(200)
@@ -58,7 +58,7 @@ class DepartmentTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $departament = factory(Department::class)->states('withEstablishment')->create();
+        $departament = factory(Department::class)->create();
 
         $response = $this->actingAs($user)
             ->putJson(route('departments.update',$departament->id), [
@@ -77,7 +77,7 @@ class DepartmentTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $departament = factory(Department::class)->states('withEstablishment')->create();
+        $departament = factory(Department::class)->create();
 
         $response = $this->actingAs($user)
             ->deleteJson(route('departments.destroy',$departament->id));

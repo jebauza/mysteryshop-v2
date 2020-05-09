@@ -32,9 +32,7 @@ class ClientTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $client = factory(Client::class)->create([
-            'enterprise_id' => factory(Enterprise::class)->create()->id
-        ]);
+        $client = factory(Client::class)->create();
 
         $response = $this->actingAs($user)
             ->postJson(route('clients.store'), $client->toArray());
@@ -48,9 +46,7 @@ class ClientTest extends TestCase
      */
     public function test_it_can_show()
     {
-        $client = factory(Client::class)->create([
-            'enterprise_id' => factory(Enterprise::class)->create()->id
-        ]);
+        $client = factory(Client::class)->create();
            
         $response = $this->getJson(route('clients.show', $client->id));
         $response->assertStatus(200)
@@ -64,9 +60,7 @@ class ClientTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $client = factory(Client::class)->create([
-            'enterprise_id' => factory(Enterprise::class)->create()->id
-        ]);
+        $client = factory(Client::class)->create();
 
         $response = $this->actingAs($user)
             ->putJson(route('clients.update',$client->id), [
@@ -87,9 +81,7 @@ class ClientTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $client = factory(Client::class)->create([
-            'enterprise_id' => factory(Enterprise::class)->create()->id
-        ]);
+        $client = factory(Client::class)->create();
 
         $response = $this->actingAs($user)
             ->deleteJson(route('clients.destroy',$client->id));
