@@ -12,6 +12,6 @@ class EstablishmentType extends Model
 
     public function establishments()
     {
-        /*TODO relation*/
+        return $this->hasMany(Establishment::class);
     }
 }

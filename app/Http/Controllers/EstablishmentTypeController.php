@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEstablishmentTypeRequest;
 use App\Http\Requests\UpdateEstablishmentTypeRequest;
 use App\Http\Resources\EstablishmentTypeResource;
+use Exception;
 use Illuminate\Http\Request;
 use App\Models\EstablishmentType;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -25,7 +26,7 @@ class EstablishmentTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param StoreEstablishmentTypeRequest $request
      * @return JsonResource
      */
     public function store(StoreEstablishmentTypeRequest $request)
@@ -38,7 +39,7 @@ class EstablishmentTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\EstablishmentType  $establishmentType
+     * @param EstablishmentType $establishmentType
      * @return JsonResource
      */
     public function show(EstablishmentType $establishmentType)
@@ -49,8 +50,8 @@ class EstablishmentTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\EstablishmentType  $establishmentType
+     * @param UpdateEstablishmentTypeRequest $request
+     * @param EstablishmentType $establishmentType
      * @return JsonResource
      */
     public function update(UpdateEstablishmentTypeRequest $request, EstablishmentType $establishmentType)
@@ -63,8 +64,9 @@ class EstablishmentTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\EstablishmentType  $establishmentType
-     * @return \Illuminate\Http\Response
+     * @param EstablishmentType $establishmentType
+     * @return Response
+     * @throws Exception
      */
     public function destroy(EstablishmentType $establishmentType)
     {

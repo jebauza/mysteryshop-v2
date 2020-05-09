@@ -6,6 +6,8 @@ use App\Models\Enterprise;
 use App\Http\Resources\EnterpriseResource;
 use App\Http\Requests\StoreEnterpriseRequest;
 use App\Http\Requests\updateEnterpriseResquest;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 
@@ -24,7 +26,7 @@ class EnterpriseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param StoreEnterpriseRequest $request
      * @return JsonResource
      */
     public function store(StoreEnterpriseRequest $request)
@@ -37,7 +39,7 @@ class EnterpriseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Enterprise $enterprises
+     * @param Enterprise $enterprises
      * @return JsonResource
      */
     public function show(Enterprise $enterprises)
@@ -48,8 +50,8 @@ class EnterpriseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Enterprise $enterprises
+     * @param updateEnterpriseResquest $request
+     * @param Enterprise $enterprises
      * @return JsonResource
      */
     public function update(updateEnterpriseResquest $request, Enterprise $enterprises)
@@ -62,8 +64,9 @@ class EnterpriseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Enterprise $enterprises
-     * @return \Illuminate\Http\Response
+     * @param Enterprise $enterprises
+     * @return Response
+     * @throws Exception
      */
     public function destroy(Enterprise $enterprises)
     {

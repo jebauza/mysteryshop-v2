@@ -23,6 +23,7 @@ Route::apiResources([
     'enterprises' => 'EnterpriseController',
     'clients' => 'ClientController',
     'establishment_types' => 'EstablishmentTypeController',
+    'establishments' => 'EstablishmentController',
 ]);
 
 Route::get('/home', 'HomeController@index')->name('home');

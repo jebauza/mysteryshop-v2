@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateEstablishmentRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateEstablishmentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -24,7 +25,10 @@ class UpdateEstablishmentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'establishment_type_id' => 'required|exists:establishment_types,id',
+            'client_id' => 'required|exists:clients,id'
         ];
     }
 }

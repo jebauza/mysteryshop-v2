@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Establishment;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -13,10 +14,21 @@ class EstablishmentTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function test_it_can_list()
     {
-        $response = $this->get('/');
+        $response = $this->getJson(route('establishments.index'));
+        $response->assertStatus(200)
+            ->assertJsonStructure(['data']);
+    }
 
-        $response->assertStatus(200);
+    /**
+     * @return void
+     */
+    public function test_it_can_show()
+    {
+        $establishment = factory(Establishment::class)->create();
+        $response = $this->getJson(route('establishments.show', $establishment->id));
+        $response->assertStatus(200)
+            ->assertJsonStructure(['data']);
     }
 }

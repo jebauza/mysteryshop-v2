@@ -18,7 +18,7 @@ class Client extends Model
 
     public function establishments()
     {
-        /**TODO realacion with establishments*/
+        return $this->hasMany(Establishment::class);
     }
 
 }
