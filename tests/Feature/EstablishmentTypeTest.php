@@ -76,7 +76,7 @@ class EstablishmentTypeTest extends TestCase
         $user = factory(User::class)->create();
         $type = factory(EstablishmentType::class)->create();
         $response = $this->actingAs($user)
-            ->deleteJson(route('enterprises.destroy',$type->id));
+            ->deleteJson(route('establishment_types.destroy',$type->id));
         $response->assertStatus(200);
     }
 }
