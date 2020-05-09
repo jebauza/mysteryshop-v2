@@ -15,3 +15,13 @@ $factory->define(Client::class, function (Faker $faker) {
     ];
 });
 
+//use factory(App\User::class, 5)->states('withEnterprise')->make();
+$factory->state(Client::class, 'withEnterprise', function ($faker) {
+    return [
+        'name' => $faker->name,
+        'address' => $faker->address,
+        'contract_number' => Str::random(8),
+        'enterprise_id' => factory(Enterprise::class)->create()->id
+    ];
+});
+
