@@ -24,7 +24,7 @@ class ClientController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return JsonResource
      */
     public function store(StoreClientRequest $request)
     {
@@ -37,7 +37,7 @@ class ClientController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Client  $client
-     * @return \Illuminate\Http\Response
+     * @return JsonResource
      */
     public function show(Client $client)
     {
@@ -49,7 +49,7 @@ class ClientController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Client  $client
-     * @return \Illuminate\Http\Response
+     * @return JsonResource
      */
     public function update(UpdateClientRequest $request, Client $client)
     {
