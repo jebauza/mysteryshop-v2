@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\User;
 use Tests\TestCase;
 use App\Models\Department;
+use Illuminate\Support\Str;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -30,7 +31,7 @@ class DepartmentTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $departament = factory(Department::class)->states('withEstablishment')->create();
+        $departament = factory(Department::class)->create();
 
         $response = $this->actingAs($user)
             ->postJson(route('departments.store'), $departament->toArray());
