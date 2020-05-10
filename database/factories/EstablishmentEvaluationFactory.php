@@ -12,7 +12,7 @@ $factory->define(EstablishmentEvaluation::class, function (Faker $faker) {
         'date' => $faker->date(),
         'time' => $faker->time('H:i'),
         'comment' => $faker->text(rand(50,500)),
-        'employee_name' => $faker->name,
+        'employee_name' => $faker->boolean ? $faker->name : '',
         'establishment_id' => factory(Establishment::class)->create()->id,
         'user_id' => factory(User::class)->create()->id
     ];
