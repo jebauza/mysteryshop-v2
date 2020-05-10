@@ -6,7 +6,7 @@ use App\Models\Enterprise;
 use Illuminate\Http\Response;
 use App\Http\Resources\EnterpriseResource;
 use App\Http\Requests\StoreEnterpriseRequest;
-use App\Http\Requests\updateEnterpriseResquest;
+use App\Http\Requests\UpdateEnterpriseResquest;
 use Exception;
 
 
@@ -51,7 +51,7 @@ class EnterpriseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param updateEnterpriseResquest $request
+     * @param UpdateEnterpriseResquest $request
      * @param Enterprise $enterprises
      * @return JsonResource
      */
