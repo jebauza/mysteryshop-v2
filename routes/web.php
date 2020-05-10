@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::apiResources([
+    'users' => 'UserController',
     'enterprises' => 'EnterpriseController',
     'clients' => 'ClientController',
     'establishment_types' => 'EstablishmentTypeController',

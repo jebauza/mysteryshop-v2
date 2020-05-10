@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class EstablishmentTest extends TestCase
@@ -67,6 +68,9 @@ class EstablishmentTest extends TestCase
         $response = $this->actingAs($user)
             ->putJson(route('establishments.update',$establishment->id), [
                 'name' => $establishment->name. Str::random(5),
+                'address' => $establishment->address. Str::random(5),
+                'establishment_type_id' => $establishment->establishment_type_id,
+                'client_id' => $establishment->client_id,
             ]);
         $response->assertStatus(201)
             ->assertJsonStructure(['data']);

@@ -6,7 +6,6 @@ use App\Http\Requests\StoreEstablishmentTypeRequest;
 use App\Http\Requests\UpdateEstablishmentTypeRequest;
 use App\Http\Resources\EstablishmentTypeResource;
 use Exception;
-use Illuminate\Http\Request;
 use App\Models\EstablishmentType;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
