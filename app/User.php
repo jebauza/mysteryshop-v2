@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Enterprise;
+use App\Models\DepartmentEvaluation;
 use App\Models\EstablishmentEvaluation;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -47,5 +48,10 @@ class User extends Authenticatable
     public function establishmentEvaluations()
     {
         return $this->hasMany(EstablishmentEvaluation::class, 'user_id', 'id');
+    }
+
+    public function departmentEvaluations()
+    {
+        return $this->hasMany(DepartmentEvaluation::class, 'user_id', 'id');
     }
 }
