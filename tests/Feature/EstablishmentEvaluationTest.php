@@ -4,23 +4,25 @@ namespace Tests\Feature;
 
 use App\User;
 use Tests\TestCase;
-use App\Models\Client;
-use App\Models\Enterprise;
-use Illuminate\Support\Str;
+use App\Models\EstablishmentEvaluation;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Support\Str;
 
-class ClientTest extends TestCase
+class EstablishmentEvaluationTest extends TestCase
 {
     use WithoutMiddleware;
-    
+
     /**
      * @return void
      */
     public function test_it_can_list()
     {
-        $response = $this->getJson(route('clients.index'));
+        $user = factory(User::class)->create();
+
+        $response = $this->actingAs($user)->getJson(route('establishment_evaluations.index'));
         $response->assertStatus(200)
             ->assertJsonStructure(['data']);
     }
@@ -32,10 +34,12 @@ class ClientTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $client = factory(Client::class)->create();
+        $estabEvaluation = factory(EstablishmentEvaluation::class)->make([
+            'user_id' => $user->id
+        ]);
 
         $response = $this->actingAs($user)
-            ->postJson(route('clients.store'), $client->toArray());
+            ->postJson(route('establishment_evaluations.store'), $estabEvaluation->toArray());
 
         $response->assertStatus(201)
             ->assertJsonStructure(['data']);
@@ -46,9 +50,10 @@ class ClientTest extends TestCase
      */
     public function test_it_can_show()
     {
-        $client = factory(Client::class)->create();
+        $user = factory(User::class)->create();
+        $estabEvaluation = factory(EstablishmentEvaluation::class)->create();
            
-        $response = $this->getJson(route('clients.show', $client->id));
+        $response = $this->actingAs($user)->getJson(route('establishment_evaluations.show', $estabEvaluation->id));
         $response->assertStatus(200)
             ->assertJsonStructure(['data']);
     }
@@ -60,14 +65,18 @@ class ClientTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $client = factory(Client::class)->create();
+        $estabEvaluation = factory(EstablishmentEvaluation::class)->create([
+            'user_id' => $user->id
+        ]);
 
         $response = $this->actingAs($user)
-            ->putJson(route('clients.update',$client->id), [
-                'name' => $client->name."_".Str::random(4),
-                'address' => $client->address."_".Str::random(2),
-                'contract_number' => Str::random(8),
-                'enterprise_id' => $client->enterprise->id
+            ->putJson(route('establishment_evaluations.update',$estabEvaluation->id), [
+                'date' => Carbon::createFromFormat('Y-m-d',$estabEvaluation->date)->subDays(2)->toDateString(),
+                'time' => '15:2'.rand(0,9),
+                'comment' => Str::random(50),
+                'employee_name' => '',
+                'establishment_id' => $estabEvaluation->establishment_id,
+                'user_id' => $estabEvaluation->user_id
             ]);
 
         $response->assertStatus(201)
@@ -81,10 +90,12 @@ class ClientTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $client = factory(Client::class)->create();
+        $estabEvaluation = factory(EstablishmentEvaluation::class)->create([
+            'user_id' => $user->id
+        ]);
 
         $response = $this->actingAs($user)
-            ->deleteJson(route('clients.destroy',$client->id));
+            ->deleteJson(route('establishment_evaluations.destroy',$estabEvaluation->id));
 
         $response->assertStatus(200)
             ->assertJsonStructure(['messenge']);
