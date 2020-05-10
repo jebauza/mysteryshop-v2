@@ -4,13 +4,14 @@ namespace Tests\Feature;
 
 use App\User;
 use Tests\TestCase;
-use App\Models\Department;
-use Illuminate\Support\Str;
+use App\Models\EstablishmentEvaluation;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Support\Str;
 
-class DepartmentTest extends TestCase
+class EstablishmentEvaluationTest extends TestCase
 {
     use WithoutMiddleware;
 
@@ -20,8 +21,8 @@ class DepartmentTest extends TestCase
     public function test_it_can_list()
     {
         $user = factory(User::class)->create();
-        
-        $response = $this->actingAs($user)->getJson(route('departments.index'));
+
+        $response = $this->actingAs($user)->getJson(route('establishment_evaluations.index'));
         $response->assertStatus(200)
             ->assertJsonStructure(['data']);
     }
@@ -33,10 +34,12 @@ class DepartmentTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $departament = factory(Department::class)->make();
+        $estabEvaluation = factory(EstablishmentEvaluation::class)->make([
+            'user_id' => $user->id
+        ]);
 
         $response = $this->actingAs($user)
-            ->postJson(route('departments.store'), $departament->toArray());
+            ->postJson(route('establishment_evaluations.store'), $estabEvaluation->toArray());
 
         $response->assertStatus(201)
             ->assertJsonStructure(['data']);
@@ -48,9 +51,9 @@ class DepartmentTest extends TestCase
     public function test_it_can_show()
     {
         $user = factory(User::class)->create();
-        $departament = factory(Department::class)->create();
+        $estabEvaluation = factory(EstablishmentEvaluation::class)->create();
            
-        $response = $this->actingAs($user)->getJson(route('departments.show', $departament->id));
+        $response = $this->actingAs($user)->getJson(route('establishment_evaluations.show', $estabEvaluation->id));
         $response->assertStatus(200)
             ->assertJsonStructure(['data']);
     }
@@ -62,12 +65,18 @@ class DepartmentTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $departament = factory(Department::class)->create();
+        $estabEvaluation = factory(EstablishmentEvaluation::class)->create([
+            'user_id' => $user->id
+        ]);
 
         $response = $this->actingAs($user)
-            ->putJson(route('departments.update',$departament->id), [
-                'name' => $departament->name."_".Str::random(4),
-                'establishment_id' => $departament->establishment_id,
+            ->putJson(route('establishment_evaluations.update',$estabEvaluation->id), [
+                'date' => Carbon::createFromFormat('Y-m-d',$estabEvaluation->date)->subDays(2)->toDateString(),
+                'time' => '15:2'.rand(0,9),
+                'comment' => Str::random(50),
+                'employee_name' => '',
+                'establishment_id' => $estabEvaluation->establishment_id,
+                'user_id' => $estabEvaluation->user_id
             ]);
 
         $response->assertStatus(201)
@@ -81,14 +90,14 @@ class DepartmentTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        $departament = factory(Department::class)->create();
+        $estabEvaluation = factory(EstablishmentEvaluation::class)->create([
+            'user_id' => $user->id
+        ]);
 
         $response = $this->actingAs($user)
-            ->deleteJson(route('departments.destroy',$departament->id));
+            ->deleteJson(route('establishment_evaluations.destroy',$estabEvaluation->id));
 
         $response->assertStatus(200)
             ->assertJsonStructure(['messenge']);
     }
-
-
 }

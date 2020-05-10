@@ -3,9 +3,10 @@
 namespace App;
 
 use App\Models\Enterprise;
+use App\Models\EstablishmentEvaluation;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -41,5 +42,10 @@ class User extends Authenticatable
     public function enterprise()
     {
         return $this->belongsTo(Enterprise::class);
+    }
+
+    public function establishmentEvaluations()
+    {
+        return $this->hasMany(EstablishmentEvaluation::class, 'user_id', 'id');
     }
 }
