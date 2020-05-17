@@ -4,12 +4,24 @@
 
 @section('title', 'Dashboard')
 
+@section('body')
+<div id="app">
+    @parent
+</div>
+@stop
+
 @section('content_header')
 <h1>Dashboard</h1>
 @stop
 
 @section('content')
-<p>Welcome to this beautiful admin panel.</p>
+<div>
+    <p>Welcome to this beautiful admin panel.</p>
+    <example-component></example-component>
+</div>
+
+@php
+@endphp
 @stop
 
 @section('css')
