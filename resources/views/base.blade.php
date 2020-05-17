@@ -6,7 +6,11 @@
 
 @section('body')
 <div id="app">
-    @parent
+
+    <app inline-template>
+        @parent
+    </app>
+
 </div>
 @stop
 
