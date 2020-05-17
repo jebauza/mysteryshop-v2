@@ -28,6 +28,7 @@ Route::apiResources([
     'departments' => 'DepartmentController',
     'establishment_evaluations' => 'EstablishmentEvaluationController',
     'department_evaluations' => 'DepartmentEvaluationController'
+    
 ]);
 
 Route::get('/home', 'HomeController@index')->name('home');
