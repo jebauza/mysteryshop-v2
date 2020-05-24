@@ -10,12 +10,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::get('/blanck', function () {
-    return view('blank');
-});
-
-
 Route::apiResources([
     'users' => 'UserController',
     'enterprises' => 'EnterpriseController',
