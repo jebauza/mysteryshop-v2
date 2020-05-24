@@ -1,23 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<div id="app">
+    <app inline-template>
+        <!-- Site wrapper -->
+        <div class="wrapper">
 
-                    You are logged in!
-                </div>
-            </div>
+            <!-- main-header -->
+            @include('layouts.main-header')
+
+            <!--left-menu -->
+            @include('layouts.left-menu')
+
+            {{-- content-wrapper --}}
+            @include('layouts.content-wrapper')
+
+            {{-- main-footer --}}
+            @include('layouts.main-footer')
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
+
         </div>
-    </div>
+
+    </app>
 </div>
+
 @endsection
