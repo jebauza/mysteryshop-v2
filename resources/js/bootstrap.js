@@ -13,9 +13,8 @@ try {
     require('bootstrap');
 
     //require('overlayscrollbars');
-    require('../../vendor/almasaeed2010/adminlte/dist/js/adminlte.min.js');
+    require('../../vendor/almasaeed2010/adminlte/dist/js/adminlte');
     require('../../vendor/almasaeed2010/adminlte/dist/js/demo');
-
 
 } catch (e) {}
 
