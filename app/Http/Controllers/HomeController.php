@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('base');
+        return view('other',['link'=>'<a class="" href="http://mysteryshop2.test/admin/settings">Profile</a>']);
     }
 }
