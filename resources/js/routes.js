@@ -8,11 +8,16 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: require('./view/Home')
+            component: require('./view/Home').default
+        },
+        {
+            path: '/prueba',
+            name: 'prueba',
+            component: require('./view/Prueba').default
         },
         {
             path: '*',
-            component: require('./view/404')
+            component: require('./view/404').default
         }
     ],
     mode: 'history'
