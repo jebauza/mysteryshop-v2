@@ -11,9 +11,9 @@ export default new Router({
             component: require('./view/Home').default
         },
         {
-            path: '/prueba',
-            name: 'prueba',
-            component: require('./view/Prueba').default
+            path: '/enterprises',
+            name: 'enterprises',
+            component: require('./view/Enterprises').default
         },
         {
             path: '*',

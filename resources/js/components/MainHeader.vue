@@ -11,7 +11,7 @@
             <!--  <a href="../../index3.html" class="nav-link">Home</a>  -->
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <router-link class="nav-link" :to="{name: 'prueba'}">Prueba</router-link>
+            <router-link class="nav-link" :to="{name: 'enterprises'}">Enterprises</router-link>
         </li>
     </ul>
 
@@ -126,7 +126,7 @@
                     <!-- Message Start -->
                     <div class=" d-flex justify-content-center">
                             <!-- <img src="@img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
-                      
+
                             <h3 class="dropdown-item-title">
                                 Brad Diesel
                             </h3>
@@ -138,7 +138,7 @@
                      <a href="#" class="dropdown-item dropdown-footer">profile</a>
                 <a href="#" class="dropdown-item dropdown-footer" @click="onLogout()">logout</a>
                 </div>
-               
+
             </div>
         </li>
         <li class="nav-item">
