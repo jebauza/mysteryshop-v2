@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <title> AdminLTE 3 | Blank Page </title>
+    <title>MysteryShopper</title>
 </head>
 
 <body class="hold-transition sidebar-mini">
