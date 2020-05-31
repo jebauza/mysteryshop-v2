@@ -16,6 +16,11 @@ export default new Router({
             component: require('./view/Prueba').default
         },
         {
+            path: '/users',
+            name: 'users',
+            component: require('./view/Users').default
+        },
+        {
             path: '*',
             component: require('./view/404').default
         }
