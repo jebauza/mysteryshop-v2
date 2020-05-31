@@ -13,8 +13,6 @@ class UserTest extends TestCase
     use WithoutMiddleware;
 
     /**
-     * A basic feature test example.
-     *
      * @return void
      */
     public function test_it_can_list()
