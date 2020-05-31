@@ -8,7 +8,7 @@
         <div class="wrapper">
 
             <!-- main-header -->
-            @include('layouts.main-header')
+            <main-header></main-header>
 
             <!--left-menu -->
             @include('layouts.left-menu')

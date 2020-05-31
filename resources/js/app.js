@@ -5,28 +5,7 @@ window.Vue = require('vue');
 
 require('./components/layouts/AppComponent');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/* import Router from 'vue-router';
-Vue.use(Router)
-
-const router = new Router({
-    routes: [
-        {
-            path: '/',
-            name: 'home',
-            component: require('./view/Home').default
-        },
-        {
-            path: '/prueba',
-            name: 'prueba',
-            component: require('./view/Prueba').default
-        },
-        {
-            path: '*',
-            component: require('./view/404').default
-        }
-    ]
-}); */
+Vue.component('main-header', require('./components/MainHeader.vue').default);
 
 import router from './routes';
 

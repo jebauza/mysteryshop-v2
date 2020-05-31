@@ -1,4 +1,5 @@
-<!-- Navbar -->
+<template>
+    <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -7,7 +8,7 @@
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <router-link class="nav-link" :to="{name: 'home'}">Home</router-link>
-            {{-- <a href="../../index3.html" class="nav-link">Home</a> --}}
+            <!--  <a href="../../index3.html" class="nav-link">Home</a>  -->
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <router-link class="nav-link" :to="{name: 'prueba'}">Prueba</router-link>
@@ -38,8 +39,8 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar"
-                            class="img-size-50 mr-3 img-circle">
+                        <!-- <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar"
+                            class="img-size-50 mr-3 img-circle"> -->
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Brad Diesel
@@ -55,8 +56,8 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar"
-                            class="img-size-50 img-circle mr-3">
+                        <!-- <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar"
+                            class="img-size-50 img-circle mr-3"> -->
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 John Pierce
@@ -72,8 +73,8 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar"
-                            class="img-size-50 img-circle mr-3">
+                        <!-- <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar"
+                            class="img-size-50 img-circle mr-3"> -->
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Nora Silvester
@@ -124,7 +125,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class=" d-flex justify-content-center">
-                            <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                            <!-- <img src="@img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
                       
                             <h3 class="dropdown-item-title">
                                 Brad Diesel
@@ -135,7 +136,7 @@
                 <div class="dropdown-divider"></div>
                 <div class="d-flex justify-content-between">
                      <a href="#" class="dropdown-item dropdown-footer">profile</a>
-                <a href="#" class="dropdown-item dropdown-footer">logout</a>
+                <a href="#" class="dropdown-item dropdown-footer" @click="onLogout()">logout</a>
                 </div>
                
             </div>
@@ -147,3 +148,20 @@
         </li>
     </ul>
 </nav>
+
+</template>
+
+<script>
+    export default {
+        mounted() {
+            console.log('Component mounted.')
+        },
+         methods: {
+            onLogout() {
+               axios.post('/logout').then(response => {
+                    window.location.href = "/login";
+                })
+            }
+        }
+    }
+</script>

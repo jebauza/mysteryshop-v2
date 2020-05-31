@@ -23,7 +23,9 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
-
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
     @yield('content')
 
 </body>
