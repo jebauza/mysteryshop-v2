@@ -21,7 +21,7 @@ class EnterpriseController extends Controller
      */
     public function index()
     {
-        return EnterpriseResource::collection(Enterprise::all());
+        return EnterpriseResource::collection(Enterprise::orderBy('id', 'DESC')->paginate());
     }
 
     /**
