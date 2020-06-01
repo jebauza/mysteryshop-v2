@@ -31,7 +31,22 @@
                             Users
                         </p>
                     </router-link>
-                   
+                </li>
+                <li class="nav-item">
+                    <router-link class="nav-link" :to="{name: 'clients'}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Clients
+                        </p>
+                    </router-link>
+                </li>   
+                 <li class="nav-item">
+                    <router-link class="nav-link" :to="{name: 'establishments'}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Establishment
+                        </p>
+                    </router-link>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">

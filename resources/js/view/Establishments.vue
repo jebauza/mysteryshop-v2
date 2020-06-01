@@ -21,16 +21,18 @@
                   <thead>
                     <tr>
                       <th>Name</th>
-                      <th>Surname</th>
-                      <th>Email</th>
+                      <th>Address</th>
+                      <th>Type</th>
+                      <th>Client</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="user in users" :key="user.id">
-                      <td>{{user.name}}</td>
-                      <td>{{user.surname}}</td>
-                      <td>{{user.email}}</td>
+                    <tr v-for="establishment in establishments" :key="establishment.id">
+                      <td>{{establishment.name}}</td>
+                      <td>{{establishment.address}}</td>
+                      <td>{{establishment.type.name}}</td>
+                      <td>{{establishment.client.name}}</td>
                       <td>
                         <a class="text-primary fa fa-eye"></a>    
                         <a class="text-success fa fa-pen"></a>    
@@ -45,29 +47,24 @@
             <!-- /.card -->
           </div>
         </div>
-  <!--   <div class="col-md-8">
-        <h1>Estas en Users</h1>
-        <example-component></example-component>
-    </div> -->
 </template>
 <script>
     export default {
         data(){
             return {
-                users: [],
+                establishments: [],
             }
         },
         methods:{
-            getUsers() {
-                axios.get('/api/users').then(response => {
-                    console.log(response)
-                    this.users = response.data.data
+            getEstablishments() {
+                axios.get('/api/establishments').then(response => {
+                    this.establishments = response.data.data
                    
                 })
             },
         },
         mounted(){
-            this.getUsers()
+            this.getEstablishments()
         }
     }
 </script>

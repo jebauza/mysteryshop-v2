@@ -21,16 +21,18 @@
                   <thead>
                     <tr>
                       <th>Name</th>
-                      <th>Surname</th>
-                      <th>Email</th>
+                      <th>Address</th>
+                      <th>N. contract</th>
+                      <th>Enterprise</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="user in users" :key="user.id">
-                      <td>{{user.name}}</td>
-                      <td>{{user.surname}}</td>
-                      <td>{{user.email}}</td>
+                    <tr v-for="client in clients" :key="client.id">
+                      <td>{{client.name}}</td>
+                      <td>{{client.address}}</td>
+                      <td>{{client.contract}}</td>
+                      <td>{{client.enterprise.name}}</td>
                       <td>
                         <a class="text-primary fa fa-eye"></a>    
                         <a class="text-success fa fa-pen"></a>    
@@ -54,20 +56,20 @@
     export default {
         data(){
             return {
-                users: [],
+                clients: [],
             }
         },
         methods:{
-            getUsers() {
-                axios.get('/api/users').then(response => {
+            getClients() {
+                axios.get('/api/clients').then(response => {
                     console.log(response)
-                    this.users = response.data.data
+                    this.clients = response.data.data
                    
                 })
             },
         },
         mounted(){
-            this.getUsers()
+            this.getClients()
         }
     }
 </script>
