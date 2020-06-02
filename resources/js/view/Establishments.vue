@@ -16,32 +16,44 @@
                 </div>
               </div>
               <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Address</th>
-                      <th>Type</th>
-                      <th>Client</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="establishment in establishments" :key="establishment.id">
-                      <td>{{establishment.name}}</td>
-                      <td>{{establishment.address}}</td>
-                      <td>{{establishment.type.name}}</td>
-                      <td>{{establishment.client.name}}</td>
-                      <td>
-                        <a class="text-primary fa fa-eye"></a>    
-                        <a class="text-success fa fa-pen"></a>    
-                        <a class="text-danger fa fa-trash"></a>    
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                <div class="card-body">
+                    <div v-if="establishments.data.length" class="table-responsive">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Type</th>
+                                <th>Client</th>
+                                <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="establishment in establishments.data" :key="establishment.id">
+                                <td>{{establishment.name}}</td>
+                                <td>{{establishment.address}}</td>
+                                <td>{{establishment.type.name}}</td>
+                                <td>{{establishment.client.name}}</td>
+                                <td>
+                                    <a class="text-primary fa fa-eye"></a>
+                                    <a class="text-success fa fa-pen"></a>
+                                    <a class="text-danger fa fa-trash"></a>
+                                </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div v-else class="alert alert-warning text-center">
+                        No hay elementos
+                    </div>
+
+                    <pagination v-if="establishments.data.length" class="pt-4"
+                        :limit="5"
+                        :data="establishments"
+                        @pagination-change-page="getEstablishments">
+                    </pagination>
+                </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -50,21 +62,29 @@
 </template>
 <script>
     export default {
-        data(){
-            return {
-                establishments: [],
-            }
-        },
-        methods:{
-            getEstablishments() {
-                axios.get('/api/establishments').then(response => {
-                    this.establishments = response.data.data
-                   
-                })
-            },
-        },
+
         mounted(){
             this.getEstablishments()
+        },
+
+        data(){
+            return {
+                establishments: {data: []},
+            }
+        },
+
+        methods:{
+            getEstablishments(page=1) {
+                let url = '/api/establishments?page=' + page;
+
+                axios.get(url)
+                .then(response => {
+                    this.establishments = response.data
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+            },
         }
     }
 </script>
