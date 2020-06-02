@@ -17,7 +17,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return ClientResource::collection(Client::all());
+        return ClientResource::collection(Client::orderBy('id', 'DESC')->paginate());
     }
 
     /**
@@ -53,7 +53,7 @@ class ClientController extends Controller
      */
     public function update(UpdateClientRequest $request, Client $client)
     {
-        
+
         $client->fill($request->all())->save();
 
         return new ClientResource($client);
@@ -69,6 +69,6 @@ class ClientController extends Controller
     {
         $client->delete();
 
-        return response()->json(['messenge'=>'OK'], 200);  
+        return response()->json(['messenge'=>'OK'], 200);
     }
 }

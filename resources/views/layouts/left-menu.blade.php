@@ -33,21 +33,30 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
+                    <router-link class="nav-link" :to="{name: 'enterprises'}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Empresas
+                        </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
                     <router-link class="nav-link" :to="{name: 'clients'}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Clients
                         </p>
                     </router-link>
-                </li>   
-                 <li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <router-link class="nav-link" :to="{name: 'establishments'}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Establishment
+                            Establishments
                         </p>
                     </router-link>
                 </li>
+
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>

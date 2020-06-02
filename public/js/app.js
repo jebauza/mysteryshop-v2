@@ -2170,24 +2170,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    this.getClients();
+  },
   data: function data() {
     return {
-      clients: []
+      clients: {
+        data: []
+      }
     };
   },
   methods: {
     getClients: function getClients() {
       var _this = this;
 
-      axios.get('/api/clients').then(function (response) {
-        console.log(response);
-        _this.clients = response.data.data;
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      var url = '/api/clients?page=' + page;
+      axios.get(url).then(function (response) {
+        _this.clients = response.data;
+      })["catch"](function (err) {
+        console.error(err);
       });
     }
-  },
-  mounted: function mounted() {
-    this.getClients();
   }
 });
 
@@ -2254,8 +2276,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  created: function created() {
+  mounted: function mounted() {
     this.getEnterprises();
   },
   data: function data() {
@@ -2341,23 +2365,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    this.getEstablishments();
+  },
   data: function data() {
     return {
-      establishments: []
+      establishments: {
+        data: []
+      }
     };
   },
   methods: {
     getEstablishments: function getEstablishments() {
       var _this = this;
 
-      axios.get('/api/establishments').then(function (response) {
-        _this.establishments = response.data.data;
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      var url = '/api/establishments?page=' + page;
+      axios.get(url).then(function (response) {
+        _this.establishments = response.data;
+      })["catch"](function (err) {
+        console.error(err);
       });
     }
-  },
-  mounted: function mounted() {
-    this.getEstablishments();
   }
 });
 
@@ -2444,24 +2486,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    this.getUsers();
+  },
   data: function data() {
     return {
-      users: []
+      users: {
+        data: []
+      }
     };
   },
   methods: {
     getUsers: function getUsers() {
       var _this = this;
 
-      axios.get('/api/users').then(function (response) {
-        console.log(response);
-        _this.users = response.data.data;
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      var url = '/api/users?page=' + page;
+      axios.get(url).then(function (response) {
+        _this.users = response.data;
+      })["catch"](function (err) {
+        console.error(err);
       });
     }
-  },
-  mounted: function mounted() {
-    this.getUsers();
   }
 });
 
@@ -39185,29 +39244,56 @@ var render = function() {
       _c("div", { staticClass: "card" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body table-responsive p-0" }, [
-          _c("table", { staticClass: "table table-hover text-nowrap" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.clients, function(client) {
-                return _c("tr", { key: client.id }, [
-                  _c("td", [_vm._v(_vm._s(client.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(client.address))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(client.contract))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(client.enterprise.name))]),
-                  _vm._v(" "),
-                  _vm._m(2, true)
+        _c("div", { staticClass: "card-body table-responsive p-0" }),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "card-body" },
+          [
+            _vm.clients.data.length
+              ? _c("div", { staticClass: "table-responsive" }, [
+                  _c(
+                    "table",
+                    { staticClass: "table table-hover text-nowrap" },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.clients.data, function(client) {
+                          return _c("tr", { key: client.id }, [
+                            _c("td", [_vm._v(_vm._s(client.name))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(client.address))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(client.contract))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(client.enterprise.name))]),
+                            _vm._v(" "),
+                            _vm._m(2, true)
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  )
                 ])
-              }),
-              0
-            )
-          ])
-        ])
+              : _c("div", { staticClass: "alert alert-warning text-center" }, [
+                  _vm._v(
+                    "\n                        No hay elementos\n                    "
+                  )
+                ]),
+            _vm._v(" "),
+            _vm.clients.data.length
+              ? _c("pagination", {
+                  staticClass: "pt-4",
+                  attrs: { limit: 5, data: _vm.clients },
+                  on: { "pagination-change-page": _vm.getClients }
+                })
+              : _vm._e()
+          ],
+          1
+        )
       ])
     ])
   ])
@@ -39324,13 +39410,9 @@ var render = function() {
                         "tbody",
                         _vm._l(_vm.enterprieses.data, function(e) {
                           return _c("tr", { key: e.id }, [
-                            _c("td", {
-                              domProps: { textContent: _vm._s(e.name) }
-                            }),
+                            _c("td", [_vm._v(_vm._s(e.name))]),
                             _vm._v(" "),
-                            _c("td", {
-                              domProps: { textContent: _vm._s(e.address) }
-                            }),
+                            _c("td", [_vm._v(_vm._s(e.address))]),
                             _vm._v(" "),
                             _c("td")
                           ])
@@ -39346,6 +39428,7 @@ var render = function() {
             _vm._v(" "),
             _vm.enterprieses.data.length
               ? _c("pagination", {
+                  staticClass: "pt-4",
                   attrs: { limit: 5, data: _vm.enterprieses },
                   on: { "pagination-change-page": _vm.getEnterprises }
                 })
@@ -39433,29 +39516,58 @@ var render = function() {
       _c("div", { staticClass: "card" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body table-responsive p-0" }, [
-          _c("table", { staticClass: "table table-hover text-nowrap" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.establishments, function(establishment) {
-                return _c("tr", { key: establishment.id }, [
-                  _c("td", [_vm._v(_vm._s(establishment.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(establishment.address))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(establishment.type.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(establishment.client.name))]),
-                  _vm._v(" "),
-                  _vm._m(2, true)
+        _c(
+          "div",
+          { staticClass: "card-body" },
+          [
+            _vm.establishments.data.length
+              ? _c("div", { staticClass: "table-responsive" }, [
+                  _c(
+                    "table",
+                    { staticClass: "table table-hover text-nowrap" },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.establishments.data, function(
+                          establishment
+                        ) {
+                          return _c("tr", { key: establishment.id }, [
+                            _c("td", [_vm._v(_vm._s(establishment.name))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(establishment.address))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(establishment.type.name))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(establishment.client.name))
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(2, true)
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  )
                 ])
-              }),
-              0
-            )
-          ])
-        ])
+              : _c("div", { staticClass: "alert alert-warning text-center" }, [
+                  _vm._v(
+                    "\n                        No hay elementos\n                    "
+                  )
+                ]),
+            _vm._v(" "),
+            _vm.establishments.data.length
+              ? _c("pagination", {
+                  staticClass: "pt-4",
+                  attrs: { limit: 5, data: _vm.establishments },
+                  on: { "pagination-change-page": _vm.getEstablishments }
+                })
+              : _vm._e()
+          ],
+          1
+        )
       ])
     ])
   ])
@@ -39585,27 +39697,52 @@ var render = function() {
       _c("div", { staticClass: "card" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body table-responsive p-0" }, [
-          _c("table", { staticClass: "table table-hover text-nowrap" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.users, function(user) {
-                return _c("tr", { key: user.id }, [
-                  _c("td", [_vm._v(_vm._s(user.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.surname))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(user.email))]),
-                  _vm._v(" "),
-                  _vm._m(2, true)
+        _c(
+          "div",
+          { staticClass: "card-body" },
+          [
+            _vm.users.data.length
+              ? _c("div", { staticClass: "table-responsive" }, [
+                  _c(
+                    "table",
+                    { staticClass: "table table-hover text-nowrap" },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.users.data, function(user) {
+                          return _c("tr", { key: user.id }, [
+                            _c("td", [_vm._v(_vm._s(user.name))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(user.surname))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(user.email))]),
+                            _vm._v(" "),
+                            _vm._m(2, true)
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  )
                 ])
-              }),
-              0
-            )
-          ])
-        ])
+              : _c("div", { staticClass: "alert alert-warning text-center" }, [
+                  _vm._v(
+                    "\n                        No hay elementos\n                    "
+                  )
+                ]),
+            _vm._v(" "),
+            _vm.users.data.length
+              ? _c("pagination", {
+                  staticClass: "pt-4",
+                  attrs: { limit: 5, data: _vm.users },
+                  on: { "pagination-change-page": _vm.getUsers }
+                })
+              : _vm._e()
+          ],
+          1
+        )
       ])
     ])
   ])
@@ -39670,7 +39807,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [
-      _c("a", { staticClass: "text-primary fa fa-eye" }),
+      _c("a", { attrs: { href: "#" } }, [
+        _c("i", { staticClass: "text-primary fa fa-eye" })
+      ]),
       _vm._v(" "),
       _c("a", { staticClass: "text-success fa fa-pen" }),
       _vm._v(" "),
@@ -57714,8 +57853,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Software_ejecucion\laragon\www\mysteryshop2\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Software_ejecucion\laragon\www\mysteryshop2\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Software_instalados\laragon\www\mysteryshop2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Software_instalados\laragon\www\mysteryshop2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -26,13 +26,11 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             <tr v-for="e in enterprieses.data" :key="e.id">
-                                <td v-text="e.name"></td>
-                                <td v-text="e.address"></td>
+                                <td>{{e.name}}</td>
+                                <td>{{e.address}}</td>
                                 <td></td>
                             </tr>
-
                         </tbody>
                     </table>
                 </div>
@@ -41,7 +39,11 @@
                     No hay elementos
                 </div>
 
-                <pagination v-if="enterprieses.data.length" :limit="5" :data="enterprieses" @pagination-change-page="getEnterprises"></pagination>
+                <pagination v-if="enterprieses.data.length" class="pt-4"
+                    :limit="5"
+                    :data="enterprieses"
+                    @pagination-change-page="getEnterprises">
+                </pagination>
               </div>
               <!-- /.card-body -->
             </div>
@@ -54,7 +56,7 @@
 
 export default {
 
-    created() {
+    mounted() {
         this.getEnterprises();
     },
 

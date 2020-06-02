@@ -19,7 +19,7 @@ class EstablishmentController extends Controller
      */
     public function index()
     {
-        return EstablismentResource::collection(Establishment::all());
+        return EstablismentResource::collection(Establishment::orderBy('id', 'DESC')->paginate());
     }
 
     /**
