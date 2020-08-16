@@ -7,6 +7,8 @@ use App\Models\DepartmentEvaluation;
 use App\Http\Resources\DepartmentEvaluationResource;
 use App\Http\Requests\StoreDepartmentEvaluationRequest;
 use App\Http\Requests\UpdateDepartmentEvaluationRequest;
+use Illuminate\Http\Resources\Json\JsonResource;
+
 
 class DepartmentEvaluationController extends Controller
 {

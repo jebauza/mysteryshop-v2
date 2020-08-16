@@ -2,84 +2,75 @@
 
 namespace App\Http\Controllers;
 
-use App\IndicatorGroup;
+use App\Http\Requests\StoreIndicatorGroupRequest;
+use App\Http\Requests\UpdateIndicatorGroupRequest;
+use App\Http\Resources\IndicatorGroupResource;
+use App\Models\Indicator;
+use App\Models\IndicatorGroup;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Response;
 
 class IndicatorGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResource
      */
     public function index()
     {
-        //
+        return IndicatorGroupResource::collection(Indicator::orderBy('name')->paginate());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  StoreIndicatorGroupRequest  $request
+     * @return JsonResource
      */
-    public function store(Request $request)
+    public function store(StoreIndicatorGroupRequest $request)
     {
-        //
+        $indicator = IndicatorGroup::create($request->all());
+
+        return new IndicatorGroupResource($indicator);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\IndicatorGroup  $indicatorGroup
-     * @return \Illuminate\Http\Response
+     * @param  IndicatorGroup  $indicatorGroup
+     * @return JsonResource
      */
     public function show(IndicatorGroup $indicatorGroup)
     {
-        //
-    }
+        return new IndicatorGroupResource($indicatorGroup);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\IndicatorGroup  $indicatorGroup
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(IndicatorGroup $indicatorGroup)
-    {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\IndicatorGroup  $indicatorGroup
-     * @return \Illuminate\Http\Response
+     * @param  UpdateIndicatorGroupRequest  $request
+     * @param  IndicatorGroup  $indicatorGroup
+     * @return JsonResource
      */
     public function update(Request $request, IndicatorGroup $indicatorGroup)
     {
-        //
+        $indicatorGroup->fill($request->all())->save();
+
+        return new IndicatorGroupResource($indicatorGroup);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\IndicatorGroup  $indicatorGroup
-     * @return \Illuminate\Http\Response
+     * @param  IndicatorGroup  $indicatorGroup
+     * @return Response
      */
     public function destroy(IndicatorGroup $indicatorGroup)
     {
-        //
+        return new Response($indicatorGroup->delete());
     }
 }

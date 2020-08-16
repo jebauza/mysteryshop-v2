@@ -27,6 +27,9 @@ Route::apiResources([
     'establishments' => 'EstablishmentController',
     'departments' => 'DepartmentController',
     'establishment_evaluations' => 'EstablishmentEvaluationController',
-    'department_evaluations' => 'DepartmentEvaluationController'
+    'department_evaluations' => 'DepartmentEvaluationController',
+    'indicators' => 'IndicatorController',
+    'indicator_groups' => 'IndicatorGroupController',
+    'surveys' => 'SurveyController'
 ]);
 

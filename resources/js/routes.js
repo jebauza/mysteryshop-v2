@@ -31,6 +31,21 @@ export default new Router({
             component: require('./view/Establishments').default
         },
         {
+            path: '/indicators',
+            name: 'indicators',
+            component: require('./view/Indicators').default
+        },
+        {
+            path: '/group/indicators',
+            name: 'indicator_groups',
+            component: require('./view/IndicatorsGroup').default
+        },
+        {
+            path: '/surveys',
+            name: 'surveys',
+            component: require('./view/Surveys').default
+        },
+        {
             path: '*',
             component: require('./view/404').default
         }

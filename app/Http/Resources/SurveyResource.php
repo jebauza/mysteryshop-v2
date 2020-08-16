@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class IndicatorResource extends JsonResource
+class SurveyResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,7 +16,6 @@ class IndicatorResource extends JsonResource
     {
         return [
             'name'=>$this->name,
-            'description'=>$this->description,
             'created_at'=>$this->created_at,
             'updated_at'=>$this->updated_at,
 

@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateClientRequest;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Http\Resources\ClientResource;
+use Illuminate\Http\Resources\Json\JsonResource;
+
 
 class ClientController extends Controller
 {

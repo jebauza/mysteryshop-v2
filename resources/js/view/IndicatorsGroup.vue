@@ -22,7 +22,7 @@
 
 
                 <div class="card-body">
-                    <div v-if="indicators.data.length" class="table-responsive">
+                    <div v-if="indicators_group.data.length" class="table-responsive">
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
@@ -32,7 +32,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="indicator in indicators.data" :key="indicator.id">
+                                <tr v-for="indicator in indicators_group.data" :key="indicator.id">
                                 <td>{{indicator.name}}</td>
                                 <td>{{indicator.description}}</td>
                                 <td>
@@ -49,9 +49,9 @@
                         No hay elementos
                     </div>
 
-                    <pagination v-if="indicators.data.length" class="pt-4"
+                    <pagination v-if="indicators_group.data.length" class="pt-4"
                         :limit="5"
-                        :data="indicators"
+                        :data="indicators_group"
                         @pagination-change-page="getIndicators">
                     </pagination>
                 </div>
@@ -74,16 +74,16 @@
 
         data(){
             return {
-                indicators: {data: []},
+                indicators_group: {data: []},
             }
         },
         methods:{
             getIndicators(page=1) {
-                let url = '/api/indicators?page=' + page;
+                let url = '/api/indicator_groups?page=' + page;
 
                 axios.get(url)
                 .then(response => {
-                    this.indicators = response.data
+                    this.indicators_group = response.data
                 })
                 .catch(err => {
                     console.error(err);

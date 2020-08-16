@@ -57,6 +57,30 @@
                             </p>
                         </router-link>
                     </li>
+                    <li class="nav-item">
+                    <router-link class="nav-link" :to="{name: 'indicators'}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Indicators
+                        </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link class="nav-link" :to="{name: 'indicator_groups'}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Indicators group
+                        </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link class="nav-link" :to="{name: 'surveys'}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>c
+                            Surveys
+                        </p>
+                    </router-link>
+                </li>
 
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
