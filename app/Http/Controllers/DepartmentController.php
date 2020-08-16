@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Resources\DepartmentResource;
 use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
+use Illuminate\Http\Resources\Json\JsonResource;
+
 
 class DepartmentController extends Controller
 {

@@ -22,23 +22,19 @@
 
 
                 <div class="card-body">
-                    <div v-if="clients.data.length" class="table-responsive">
+                    <div v-if="indicators.data.length" class="table-responsive">
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
                                 <th>Name</th>
-                                <th>Address</th>
-                                <th>N. contract</th>
-                                <th>Enterprise</th>
+                                <th>description</th>
                                 <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="client in clients.data" :key="client.id">
-                                <td>{{client.name}}</td>
-                                <td>{{client.address}}</td>
-                                <td>{{client.contract}}</td>
-                                <td>{{client.enterprise.name}}</td>
+                                <tr v-for="indicator in indicators.data" :key="indicator.id">
+                                <td>{{indicator.name}}</td>
+                                <td>{{indicator.description}}</td>
                                 <td>
                                     <a class="text-primary fa fa-eye"></a>
                                     <a class="text-success fa fa-pen"></a>
@@ -53,10 +49,10 @@
                         No hay elementos
                     </div>
 
-                    <pagination v-if="clients.data.length" class="pt-4"
+                    <pagination v-if="indicators.data.length" class="pt-4"
                         :limit="5"
-                        :data="clients"
-                        @pagination-change-page="getClients">
+                        :data="indicators"
+                        @pagination-change-page="getIndicators">
                     </pagination>
                 </div>
               <!-- /.card-body -->
@@ -73,21 +69,21 @@
     export default {
 
         mounted(){
-            this.getClients()
+            this.getIndicators()
         },
 
         data(){
             return {
-                clients: {data: []},
+                indicators: {data: []},
             }
         },
         methods:{
-            getClients(page=1) {
-                let url = '/api/clients?page=' + page;
+            getIndicators(page=1) {
+                let url = '/api/indicators?page=' + page;
 
                 axios.get(url)
                 .then(response => {
-                    this.clients = response.data
+                    this.indicators = response.data
                 })
                 .catch(err => {
                     console.error(err);

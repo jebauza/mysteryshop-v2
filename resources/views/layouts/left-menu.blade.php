@@ -25,7 +25,7 @@
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <router-link class="nav-link" :to="{name: 'users'}" class="nav-link">
+                    <router-link class="nav-link" :to="{name: 'users'}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Users
@@ -33,7 +33,7 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" :to="{name: 'enterprises'}" class="nav-link">
+                    <router-link class="nav-link" :to="{name: 'enterprises'}" >
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Empresas
@@ -41,7 +41,7 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" :to="{name: 'clients'}" class="nav-link">
+                    <router-link class="nav-link" :to="{name: 'clients'}" >
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Clients
@@ -49,14 +49,37 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" :to="{name: 'establishments'}" class="nav-link">
+                    <router-link class="nav-link" :to="{name: 'establishments'}" >
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Establishments
                         </p>
                     </router-link>
                 </li>
-
+                <li class="nav-item">
+                    <router-link class="nav-link" :to="{name: 'indicators'}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Indicators
+                        </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link class="nav-link" :to="{name: 'indicator_groups'}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Indicators group
+                        </p>
+                    </router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link class="nav-link" :to="{name: 'surveys'}">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>c
+                            Surveys
+                        </p>
+                    </router-link>
+                </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>

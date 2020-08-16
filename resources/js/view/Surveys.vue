@@ -22,19 +22,17 @@
 
 
                 <div class="card-body">
-                    <div v-if="indicators.data.length" class="table-responsive">
+                    <div v-if="surveys.data.length" class="table-responsive">
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
                                 <th>Name</th>
-                                <th>description</th>
                                 <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="indicator in indicators.data" :key="indicator.id">
-                                <td>{{indicator.name}}</td>
-                                <td>{{indicator.description}}</td>
+                                <tr v-for="model in surveys.data" :key="model.id">
+                                <td>{{model.name}}</td>
                                 <td>
                                     <a class="text-primary fa fa-eye"></a>
                                     <a class="text-success fa fa-pen"></a>
@@ -49,10 +47,10 @@
                         No hay elementos
                     </div>
 
-                    <pagination v-if="indicators.data.length" class="pt-4"
+                    <pagination v-if="surveys.data.length" class="pt-4"
                         :limit="5"
-                        :data="indicators"
-                        @pagination-change-page="getIndicators">
+                        :data="surveys"
+                        @pagination-change-page="getSurveys">
                     </pagination>
                 </div>
               <!-- /.card-body -->
@@ -69,21 +67,21 @@
     export default {
 
         mounted(){
-            this.getIndicators()
+            this.getSurveys()
         },
 
         data(){
             return {
-                indicators: {data: []},
+                surveys: {data: []},
             }
         },
         methods:{
-            getIndicators(page=1) {
-                let url = '/api/indicators?page=' + page;
+            getSurveys(page=1) {
+                let url = '/api/surveys?page=' + page;
 
                 axios.get(url)
                 .then(response => {
-                    this.indicators = response.data
+                    this.surveys = response.data
                 })
                 .catch(err => {
                     console.error(err);

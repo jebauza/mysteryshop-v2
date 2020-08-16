@@ -7,6 +7,8 @@ use App\Models\EstablishmentEvaluation;
 use App\Http\Resources\EstablishmentEvaluationResource;
 use App\Http\Requests\StoreEstablishmentEvaluationRequest;
 use App\Http\Requests\UpdateEstablishmentEvaluationRequest;
+use Illuminate\Http\Resources\Json\JsonResource;
+
 
 class EstablishmentEvaluationController extends Controller
 {

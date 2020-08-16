@@ -2,84 +2,74 @@
 
 namespace App\Http\Controllers;
 
-use App\Indicator;
+use App\Http\Requests\StoreIndicatorRequest;
+use App\Http\Requests\UpdateIndicatorRequest;
+use App\Http\Resources\IndicatorResource;
+use App\Models\Indicator;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Response;
+
 
 class IndicatorController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResource
      */
     public function index()
     {
-        //
-    }
+        return IndicatorResource::collection(Indicator::orderBy('name')->paginate());
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  StoreIndicatorRequest  $request
+     * @return JsonResource
      */
-    public function store(Request $request)
+    public function store(StoreIndicatorRequest $request)
     {
-        //
+        $indicator = Indicator::create($request->all());
+
+        return new IndicatorResource($indicator);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Indicator  $indicator
-     * @return \Illuminate\Http\Response
+     * @param  Indicator  $indicator
+     * @return JsonResource
      */
     public function show(Indicator $indicator)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Indicator  $indicator
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Indicator $indicator)
-    {
-        //
+        return new IndicatorResource($indicator);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Indicator  $indicator
-     * @return \Illuminate\Http\Response
+     * @param  UpdateIndicatorRequest  $request
+     * @param  Indicator  $indicator
+     * @return JsonResource
      */
-    public function update(Request $request, Indicator $indicator)
+    public function update(UpdateIndicatorRequest $request, Indicator $indicator)
     {
-        //
+        $indicator->fill($request->all())->save();
+
+        return new IndicatorResource($indicator);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Indicator  $indicator
-     * @return \Illuminate\Http\Response
+     * @param  Indicator  $indicator
+     * @return Response
      */
     public function destroy(Indicator $indicator)
     {
-        //
+        return new Response($indicator->delete());
     }
 }
