@@ -24,7 +24,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     @else
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/template.css') }}">
     @endif
     @yield('load_css')
     @yield('meta_tags')
@@ -53,21 +53,27 @@
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
+    <div>
+        @yield('body')
 
-    @yield('body')
+        @if(! config('adminlte.enabled_laravel_mix'))
+        <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 
-    @if(! config('adminlte.enabled_laravel_mix'))
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+        @include('adminlte::plugins', ['type' => 'js'])
 
-    @include('adminlte::plugins', ['type' => 'js'])
+        @yield('adminlte_js')
+        @else
+        <!-- JQuery, Bootstrap, VueJS -->
+        <script src="{{ asset('js/app.js') }}"></script>
 
-    @yield('adminlte_js')
-    @else
-    <script src="{{ mix('js/app.js') }}"></script>
-    @endif
-    @yield('load_js')
+        {{-- AdminLTE --}}
+        <script src="{{ asset('js/template.js') }}"></script>
+        @endif
+        @yield('load_js')
+    </div>
+
 </body>
 
 </html>
