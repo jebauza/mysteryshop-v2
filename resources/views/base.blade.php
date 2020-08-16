@@ -21,7 +21,7 @@
 @section('content')
 <div>
     <p>Welcome to this beautiful admin panel.</p>
-    <example-component></example-component>
+    {{-- <example-component></example-component> --}}
 </div>
 
 @php

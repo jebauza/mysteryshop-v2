@@ -9,25 +9,27 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
-
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/template.css') }}">
 
     <title>MysteryShopper</title>
 </head>
 
 <body class="hold-transition sidebar-mini">
+
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
-    @yield('content')
 
+    <div class="wrapper" id="app">
+        <App web_path="{{ route('basepath') }}"></App>
+    </div>
+
+    <!-- JQuery, Bootstrap, VueJS -->
+    <script src="{{ asset('js/app.js') }}"></script>
+
+    {{-- AdminLTE --}}
+    <script src="{{ asset('js/template.js') }}"></script>
 </body>
 
 </html>
