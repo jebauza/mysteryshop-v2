@@ -13,37 +13,37 @@ export default new Router({
         {
             path: '/enterprises',
             name: 'enterprises',
-            component: require('./view/Enterprises').default
+            component: require('./components/enterprises/EnterprisesComponent').default
         },
         {
             path: '/users',
             name: 'users',
-            component: require('./view/Users').default
+            component: require('./components/users/UsersComponent').default
         },
         {
             path: '/clients',
             name: 'clients',
-            component: require('./view/Clients').default
+            component: require('./components/clients/ClientsComponent').default
         },
         {
             path: '/establishments',
             name: 'establishments',
-            component: require('./view/Establishments').default
+            component: require('./components/establishments/EstablishmentsComponent').default
         },
         {
             path: '/indicators',
             name: 'indicators',
-            component: require('./view/Indicators').default
+            component: require('./components/indicators/IndicatorsComponent').default
         },
         {
             path: '/group/indicators',
             name: 'indicator_groups',
-            component: require('./view/IndicatorsGroup').default
+            component: require('./components/indicators_group/IndicatorsGroupComponent').default
         },
         {
             path: '/surveys',
             name: 'surveys',
-            component: require('./view/Surveys').default
+            component: require('./components/surveys/SurveysComponent').default
         },
         {
             path: '*',
