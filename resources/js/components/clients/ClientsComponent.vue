@@ -42,7 +42,7 @@
                                 <td>
                                     <a class="text-primary fa fa-eye"></a>
                                     <a class="text-success fa fa-pen"></a>
-                                    <a class="text-danger fa fa-trash"></a>
+                                    <a class="text-danger fa fa-trash" v-on:click="clientSelected=client.id;deleteClients"></a>
                                 </td>
                                 </tr>
                             </tbody>
@@ -78,6 +78,7 @@
 
         data(){
             return {
+                clientSelected:'',
                 clients: {data: []},
             }
         },
@@ -92,6 +93,19 @@
                 .catch(err => {
                     console.error(err);
                 });
+            },
+            deleteClients: function(event) {
+                alert(this.clientSelected)
+                console.log(2222,client)
+                let url = '/api/clients/'+client ;
+
+                axios.delete(url)
+                    .then(response => {
+                        console.log(response.data)
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    });
             },
         }
     }
