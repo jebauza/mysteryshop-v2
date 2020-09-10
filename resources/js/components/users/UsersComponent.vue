@@ -1,43 +1,40 @@
 <template>
-<div class="row">
-          <div class="col-12">
+    <div class="row">
+        <div class="col-12">
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+                <div class="card-header">
+                    <h3 class="card-title">Users</h3>
 
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control float-right"
+                                   placeholder="Search">
 
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
+                <!-- /.card-header -->
+                <div class="card-body">
                     <div v-if="users.data.length" class="table-responsive">
                         <table class="table table-hover text-nowrap">
                             <thead>
-                                <tr>
+                            <tr>
                                 <th>Name</th>
                                 <th>Surname</th>
                                 <th>Email</th>
                                 <th>Actions</th>
-                                </tr>
+                            </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="user in users.data" :key="user.id">
-                                <td>{{user.name}}</td>
-                                <td>{{user.surname}}</td>
-                                <td>{{user.email}}</td>
-                                <td>
-                                    <a href="#"><i class="text-primary fa fa-eye"></i></a>
-                                    <a class="text-success fa fa-pen"></a>
-                                    <a class="text-danger fa fa-trash"></a>
-                                </td>
-                                </tr>
+                            <user-item-component
+                                v-for="user in users.data"
+                                v-bind:user="user"
+                                v-bind:key="user.id"
+                                @loadData="getUsers"
+                            ></user-item-component>
                             </tbody>
                         </table>
                     </div>
@@ -47,45 +44,45 @@
                     </div>
 
                     <pagination v-if="users.data.length" class="pt-4"
-                        :limit="5"
-                        :data="users"
-                        @pagination-change-page="getUsers">
+                                :limit="5"
+                                :data="users"
+                                @pagination-change-page="getUsers">
                     </pagination>
-              </div>
-              <!-- /.card-body -->
+                </div>
+                <!-- /.card-body -->
             </div>
             <!-- /.card -->
-          </div>
         </div>
-  <!--   <div class="col-md-8">
-        <h1>Estas en Users</h1>
-        <example-component></example-component>
-    </div> -->
+    </div>
+    <!--   <div class="col-md-8">
+          <h1>Estas en Users</h1>
+          <example-component></example-component>
+      </div> -->
 </template>
 <script>
+    import UserItemComponent from './UserItemComponent';
     export default {
-
-        mounted(){
+        components: {UserItemComponent},
+        mounted() {
             this.getUsers()
         },
 
-        data(){
+        data() {
             return {
                 users: {data: []},
             }
         },
 
-        methods:{
-            getUsers(page=1) {
+        methods: {
+            getUsers(page = 1) {
                 let url = '/api/users?page=' + page;
-
                 axios.get(url)
-                .then(response => {
-                    this.users = response.data
-                })
-                .catch(err => {
-                    console.error(err);
-                });
+                    .then(response => {
+                        this.users = response.data
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    });
             },
         },
     }

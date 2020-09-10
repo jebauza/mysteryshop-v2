@@ -20,7 +20,7 @@ class DepartmentTest extends TestCase
     public function test_it_can_list()
     {
         $user = factory(User::class)->create();
-        
+
         $response = $this->actingAs($user)->getJson(route('departments.index'));
         $response->assertStatus(200)
             ->assertJsonStructure(['data']);
@@ -49,7 +49,7 @@ class DepartmentTest extends TestCase
     {
         $user = factory(User::class)->create();
         $departament = factory(Department::class)->create();
-           
+
         $response = $this->actingAs($user)->getJson(route('departments.show', $departament->id));
         $response->assertStatus(200)
             ->assertJsonStructure(['data']);
