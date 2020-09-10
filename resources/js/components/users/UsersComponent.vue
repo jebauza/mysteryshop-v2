@@ -75,7 +75,7 @@
 
         methods: {
             getUsers(page = 1) {
-                let url = '/api/users?page=' + page;
+                let url = '/cmsapi/users?page=' + page;
                 axios.get(url)
                     .then(response => {
                         this.users = response.data

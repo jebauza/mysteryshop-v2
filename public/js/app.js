@@ -2054,7 +2054,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      var url = '/api/clients?page=' + page;
+      var url = '/cmsapi/clients?page=' + page;
       axios.get(url).then(function (response) {
         _this.clients = response.data;
       })["catch"](function (err) {
@@ -2108,7 +2108,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$confirm("Are you sure do you want delete this item?", "Question", "question").then(function () {
-        var url = "/api/enterprises/".concat(item);
+        var url = "/cmsapi/enterprises/".concat(item);
         axios["delete"](url).then(function (response) {
           _this.$alert("the element have been removed", "Information", "success");
 
@@ -2211,7 +2211,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      var url = '/api/enterprises?page=' + page;
+      var url = '/cmsapi/enterprises?page=' + page;
       axios.get(url).then(function (response) {
         _this.enterprieses = response.data;
       })["catch"](function (err) {
@@ -2310,7 +2310,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      var url = '/api/establishments?page=' + page;
+      var url = '/cmsapi/establishments?page=' + page;
       axios.get(url).then(function (response) {
         _this.establishments = response.data;
       })["catch"](function (err) {
@@ -2414,7 +2414,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      var url = '/api/indicators?page=' + page;
+      var url = '/cmsapi/indicators?page=' + page;
       axios.get(url).then(function (response) {
         _this.indicators = response.data;
       })["catch"](function (err) {
@@ -2518,7 +2518,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      var url = '/api/indicator_groups?page=' + page;
+      var url = '/cmsapi/indicator_groups?page=' + page;
       axios.get(url).then(function (response) {
         _this.indicators_group = response.data;
       })["catch"](function (err) {
@@ -3485,7 +3485,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      var url = '/api/surveys?page=' + page;
+      var url = '/cmsapi/surveys?page=' + page;
       axios.get(url).then(function (response) {
         _this.surveys = response.data;
       })["catch"](function (err) {
@@ -3530,7 +3530,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$confirm("Are you sure do you want delete this item?", "Question", "question").then(function () {
-        var url = "/api/users/".concat(item);
+        var url = "/cmsapi/users/".concat(item);
         axios["delete"](url).then(function (response) {
           _this.$alert("the element have been removed", "Information", "success");
 
@@ -3638,7 +3638,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      var url = '/api/users?page=' + page;
+      var url = '/cmsapi/users?page=' + page;
       axios.get(url).then(function (response) {
         _this.users = response.data;
       })["catch"](function (err) {
@@ -43242,7 +43242,7 @@ var render = function() {
                 ])
               : _c("div", { staticClass: "alert alert-warning text-center" }, [
                   _vm._v(
-                    "\r\n                        No hay elementos\r\n                    "
+                    "\n                        No hay elementos\n                    "
                   )
                 ]),
             _vm._v(" "),
@@ -43388,7 +43388,7 @@ var render = function() {
                 ])
               : _c("div", { staticClass: "alert alert-warning text-center" }, [
                   _vm._v(
-                    "\r\n                        No hay elementos\r\n                    "
+                    "\n                        No hay elementos\n                    "
                   )
                 ]),
             _vm._v(" "),
@@ -43530,7 +43530,7 @@ var render = function() {
                 ])
               : _c("div", { staticClass: "alert alert-warning text-center" }, [
                   _vm._v(
-                    "\r\n                        No hay elementos\r\n                    "
+                    "\n                        No hay elementos\n                    "
                   )
                 ]),
             _vm._v(" "),
@@ -45562,7 +45562,7 @@ var render = function() {
                 ])
               : _c("div", { staticClass: "alert alert-warning text-center" }, [
                   _vm._v(
-                    "\r\n                        No hay elementos\r\n                    "
+                    "\n                        No hay elementos\n                    "
                   )
                 ]),
             _vm._v(" "),
@@ -62325,7 +62325,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Software_ejecucion\laragon\www\mysteryshop2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Software_instalados\laragon\www\mysteryshop2\resources\js\app.js */"./resources/js/app.js");
 
 
 /***/ })

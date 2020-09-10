@@ -75,7 +75,7 @@
 
         methods:{
             getEstablishments(page=1) {
-                let url = '/api/establishments?page=' + page;
+                let url = '/cmsapi/establishments?page=' + page;
 
                 axios.get(url)
                 .then(response => {

@@ -72,7 +72,7 @@
 
         methods: {
             getEnterprises(page = 1) {
-                let url = '/api/enterprises?page=' + page;
+                let url = '/cmsapi/enterprises?page=' + page;
                 axios.get(url)
                     .then(response => {
                         this.enterprieses = response.data

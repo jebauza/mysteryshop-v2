@@ -84,7 +84,7 @@
         },
         methods:{
             getClients(page=1) {
-                let url = '/api/clients?page=' + page;
+                let url = '/cmsapi/clients?page=' + page;
 
                 axios.get(url)
                 .then(response => {

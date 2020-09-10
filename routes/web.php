@@ -7,25 +7,20 @@ use Illuminate\Support\Facades\URL;
 
 Auth::routes(['verify' => false, 'register' => false]);
 
-Route::redirect('/home', '/');
+Route::middleware(['auth'])->name('web.')->group(function () {
 
-Route::get('/{optional?}', 'HomeController@index')->name('basepath');
+    Route::redirect('/home', '/');
 
-Route::get('/me', 'Auth\AuthController@getMeInformation')->name('auth.me');
+    Route::get('/{optional?}', 'HomeController@index')->name('basepath');
 
-/* Route::middleware(['auth'])->name('web.')->group(function () {
+    Route::get('/me', 'Auth\AuthController@getMeInformation')->name('auth.me');
 
-    Route::get('/home', function () {
-        return view('home');
-    })->name('home');
-
-    Users
-    Route::prefix('users')->name('users.')->group(function () {
+    //Users
+    /* Route::prefix('users')->name('users.')->group(function () {
         Route::get('/', 'CMS\Dashboard\UserWebController@index')->name('index');
         Route::get('/export', 'CMS\Dashboard\UserWebController@export')->name('export');
-    });
-
-}); */
+    }); */
+});
 
 
 

@@ -79,7 +79,7 @@
         },
         methods:{
             getIndicators(page=1) {
-                let url = '/api/indicator_groups?page=' + page;
+                let url = '/cmsapi/indicator_groups?page=' + page;
 
                 axios.get(url)
                 .then(response => {
