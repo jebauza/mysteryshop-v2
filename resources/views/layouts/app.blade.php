@@ -30,6 +30,7 @@
 
     {{-- AdminLTE --}}
     <script src="{{ asset('js/template.js') }}"></script>
+
 </body>
 
 </html>

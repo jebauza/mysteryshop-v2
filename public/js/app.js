@@ -3377,20 +3377,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['web_path']
+  props: ['web_path'],
+  methods: {
+    isActive: function isActive(path_url) {
+      return this.currentPage.indexOf(path_url) === 0;
+    }
+  },
+  computed: {
+    currentPage: function currentPage() {
+      console.log(this.$route.path);
+      return this.$route.path;
+    }
+  }
 });
 
 /***/ }),
@@ -42928,7 +42927,7 @@ var render = function() {
                 ])
               : _c("div", { staticClass: "alert alert-warning text-center" }, [
                   _vm._v(
-                    "\n                        No hay elementos\n                    "
+                    "\r\n                        No hay elementos\r\n                    "
                   )
                 ]),
             _vm._v(" "),
@@ -43242,7 +43241,7 @@ var render = function() {
                 ])
               : _c("div", { staticClass: "alert alert-warning text-center" }, [
                   _vm._v(
-                    "\n                        No hay elementos\n                    "
+                    "\r\n                        No hay elementos\r\n                    "
                   )
                 ]),
             _vm._v(" "),
@@ -43388,7 +43387,7 @@ var render = function() {
                 ])
               : _c("div", { staticClass: "alert alert-warning text-center" }, [
                   _vm._v(
-                    "\n                        No hay elementos\n                    "
+                    "\r\n                        No hay elementos\r\n                    "
                   )
                 ]),
             _vm._v(" "),
@@ -43530,7 +43529,7 @@ var render = function() {
                 ])
               : _c("div", { staticClass: "alert alert-warning text-center" }, [
                   _vm._v(
-                    "\n                        No hay elementos\n                    "
+                    "\r\n                        No hay elementos\r\n                    "
                   )
                 ]),
             _vm._v(" "),
@@ -44231,7 +44230,7 @@ var render = function() {
           _vm._m(0)
         ]),
         _vm._v(" "),
-        _c("nav", { staticClass: "mt-2" }, [
+        _c("nav", { staticClass: "mt-2", attrs: { id: "sidebar_menu" } }, [
           _c(
             "ul",
             {
@@ -44250,17 +44249,16 @@ var render = function() {
                   _c(
                     "router-link",
                     {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "users" } }
+                      class: [
+                        "nav-link",
+                        _vm.isActive("/users") ? "active" : ""
+                      ],
+                      attrs: { to: { path: "/users" } }
                     },
                     [
                       _c("i", { staticClass: "nav-icon fas fa-th" }),
                       _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "\n                            Users\n                        "
-                        )
-                      ])
+                      _c("p", [_vm._v("Users")])
                     ]
                   )
                 ],
@@ -44274,17 +44272,16 @@ var render = function() {
                   _c(
                     "router-link",
                     {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "enterprises" } }
+                      class: [
+                        "nav-link",
+                        _vm.isActive("/enterprises") ? "active" : ""
+                      ],
+                      attrs: { to: { path: "/enterprises" } }
                     },
                     [
                       _c("i", { staticClass: "nav-icon fas fa-th" }),
                       _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "\n                            Empresas\n                        "
-                        )
-                      ])
+                      _c("p", [_vm._v("Empresas")])
                     ]
                   )
                 ],
@@ -44298,17 +44295,16 @@ var render = function() {
                   _c(
                     "router-link",
                     {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "clients" } }
+                      class: [
+                        "nav-link",
+                        _vm.isActive("/clients") ? "active" : ""
+                      ],
+                      attrs: { to: { path: "/clients" } }
                     },
                     [
                       _c("i", { staticClass: "nav-icon fas fa-th" }),
                       _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "\n                            Clients\n                        "
-                        )
-                      ])
+                      _c("p", [_vm._v("Clients")])
                     ]
                   )
                 ],
@@ -44322,17 +44318,16 @@ var render = function() {
                   _c(
                     "router-link",
                     {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "establishments" } }
+                      class: [
+                        "nav-link",
+                        _vm.isActive("/establishments") ? "active" : ""
+                      ],
+                      attrs: { to: { path: "/establishments" } }
                     },
                     [
                       _c("i", { staticClass: "nav-icon fas fa-th" }),
                       _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "\n                            Establishments\n                        "
-                        )
-                      ])
+                      _c("p", [_vm._v("Establishments")])
                     ]
                   )
                 ],
@@ -44346,17 +44341,16 @@ var render = function() {
                   _c(
                     "router-link",
                     {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "indicators" } }
+                      class: [
+                        "nav-link",
+                        _vm.isActive("/indicators") ? "active" : ""
+                      ],
+                      attrs: { to: { path: "/indicators" } }
                     },
                     [
                       _c("i", { staticClass: "nav-icon fas fa-th" }),
                       _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "\n                        Indicators\n                    "
-                        )
-                      ])
+                      _c("p", [_vm._v("Indicators")])
                     ]
                   )
                 ],
@@ -44370,17 +44364,16 @@ var render = function() {
                   _c(
                     "router-link",
                     {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "indicator_groups" } }
+                      class: [
+                        "nav-link",
+                        _vm.isActive("/indicator_groups") ? "active" : ""
+                      ],
+                      attrs: { to: { path: "/indicator_groups" } }
                     },
                     [
                       _c("i", { staticClass: "nav-icon fas fa-th" }),
                       _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "\n                        Indicators group\n                    "
-                        )
-                      ])
+                      _c("p", [_vm._v("Indicators group")])
                     ]
                   )
                 ],
@@ -44394,17 +44387,16 @@ var render = function() {
                   _c(
                     "router-link",
                     {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "surveys" } }
+                      class: [
+                        "nav-link",
+                        _vm.isActive("/surveys") ? "active" : ""
+                      ],
+                      attrs: { to: { path: "/surveys" } }
                     },
                     [
                       _c("i", { staticClass: "nav-icon fas fa-th" }),
                       _vm._v(" "),
-                      _c("p", [
-                        _vm._v(
-                          "c\n                        Surveys\n                    "
-                        )
-                      ])
+                      _c("p", [_vm._v("Surveys")])
                     ]
                   )
                 ],
@@ -45562,7 +45554,7 @@ var render = function() {
                 ])
               : _c("div", { staticClass: "alert alert-warning text-center" }, [
                   _vm._v(
-                    "\n                        No hay elementos\n                    "
+                    "\r\n                        No hay elementos\r\n                    "
                   )
                 ]),
             _vm._v(" "),
