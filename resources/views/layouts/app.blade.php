@@ -22,7 +22,7 @@
     </form>
 
     <div class="wrapper" id="app">
-        <App web_path="{{ route('basepath') }}"></App>
+        <App web_path="{{ route('web.basepath') }}"></App>
     </div>
 
     <!-- JQuery, Bootstrap, VueJS -->
@@ -30,6 +30,7 @@
 
     {{-- AdminLTE --}}
     <script src="{{ asset('js/template.js') }}"></script>
+
 </body>
 
 </html>

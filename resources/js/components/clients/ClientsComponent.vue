@@ -1,73 +1,91 @@
 <template>
-<div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+    <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Title</h3>
 
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-
-              </div>
-
-
-                <div class="card-body">
-                    <div v-if="clients.data.length" class="table-responsive">
-                        <table class="table table-hover text-nowrap">
-                            <thead>
-                                <tr>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>N. contract</th>
-                                <th>Enterprise</th>
-                                <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="client in clients.data" :key="client.id">
-                                <td>{{client.name}}</td>
-                                <td>{{client.address}}</td>
-                                <td>{{client.contract}}</td>
-                                <td>{{client.enterprise.name}}</td>
-                                <td>
-                                    <a class="text-primary fa fa-eye"></a>
-                                    <a class="text-success fa fa-pen"></a>
-                                    <a class="text-danger fa fa-trash" v-on:click="clientSelected=client.id;deleteClients"></a>
-                                </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div v-else class="alert alert-warning text-center">
-                        No hay elementos
-                    </div>
-
-                    <pagination v-if="clients.data.length" class="pt-4"
-                        :limit="5"
-                        :data="clients"
-                        @pagination-change-page="getClients">
-                    </pagination>
-                </div>
-              <!-- /.card-body -->
+                <!-- <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                        <i class="fas fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip"
+                        title="Remove">
+                        <i class="fas fa-times"></i></button>
+                </div> -->
             </div>
-            <!-- /.card -->
-          </div>
-        </div>
-  <!--   <div class="col-md-8">
-        <h1>Estas en Users</h1>
-        <example-component></example-component>
-    </div> -->
+            <div class="card-body">
+
+                <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Responsive Hover Table</h3>
+
+                                <div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                    <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+
+                            </div>
+
+
+                                <div class="card-body">
+                                    <div v-if="clients.data.length" class="table-responsive">
+                                        <table class="table table-hover text-nowrap">
+                                            <thead>
+                                                <tr>
+                                                <th>Name</th>
+                                                <th>Address</th>
+                                                <th>N. contract</th>
+                                                <th>Enterprise</th>
+                                                <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="client in clients.data" :key="client.id">
+                                                <td>{{client.name}}</td>
+                                                <td>{{client.address}}</td>
+                                                <td>{{client.contract}}</td>
+                                                <td>{{client.enterprise.name}}</td>
+                                                <td>
+                                                    <a class="text-primary fa fa-eye"></a>
+                                                    <a class="text-success fa fa-pen"></a>
+                                                    <a class="text-danger fa fa-trash" v-on:click="clientSelected=client.id;deleteClients"></a>
+                                                </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div v-else class="alert alert-warning text-center">
+                                        No hay elementos
+                                    </div>
+
+                                    <pagination v-if="clients.data.length" class="pt-4"
+                                        :limit="5"
+                                        :data="clients"
+                                        @pagination-change-page="getClients">
+                                    </pagination>
+                                </div>
+                            <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                </div>
+
+            </div>
+            <div class="card-footer">
+                Footer
+            </div>
+
+    </div>
 </template>
 <script>
     export default {
@@ -84,7 +102,7 @@
         },
         methods:{
             getClients(page=1) {
-                let url = '/api/clients?page=' + page;
+                let url = '/cmsapi/clients?page=' + page;
 
                 axios.get(url)
                 .then(response => {

@@ -24,7 +24,7 @@
         methods:{
             deleteUser(item) {
                 this.$confirm("Are you sure do you want delete this item?","Question","question").then(() => {
-                    let url = `/api/enterprises/${item}`;
+                    let url = `/cmsapi/enterprises/${item}`;
                     axios.delete(url)
                         .then(response => {
                             this.$alert("the element have been removed","Information","success" )

@@ -1,63 +1,65 @@
 <template>
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Users</h3>
 
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right"
-                                   placeholder="Search">
-
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <div v-if="users.data.length" class="table-responsive">
-                        <table class="table table-hover text-nowrap">
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Surname</th>
-                                <th>Email</th>
-                                <th>Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <user-item-component
-                                v-for="user in users.data"
-                                v-bind:user="user"
-                                v-bind:key="user.id"
-                                @loadData="getUsers"
-                            ></user-item-component>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div v-else class="alert alert-warning text-center">
-                        No hay elementos
-                    </div>
-
-                    <pagination v-if="users.data.length" class="pt-4"
-                                :limit="5"
-                                :data="users"
-                                @pagination-change-page="getUsers">
-                    </pagination>
-                </div>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+    <div class="card card-info">
+        <div class="card-header">
+            <h4 class="card-title font-weight-bold">Lista de usuarios
+                <span v-show="users.total" class="right badge badge-dark">{{ users.total }}</span>
+            </h4>
         </div>
+
+
+        <div class="card-body">
+
+            <!-- filters -->
+            <!-- <div v-if="users.data.length  || searches.nif || searches.phone" class="form-row pl-3 align-items-end">
+
+                <div class="col-sm-5 form-group">
+                    <label for="nif" >NIF</label>
+                    <input type="text" v-model="searches.nif" class="form-control" name="nif" placeholder="NIF">
+                </div>
+                <div class="col-10 col-sm-5 form-group">
+                    <label for="phone" >Teléfono</label>
+                    <input type="text" v-model="searches.phone" class="form-control" name="phone" placeholder="Teléfono">
+                </div>
+                <div class="col-auto form-group">
+                    <button @click="deleteFilters()" title="Eliminar Filtros" type="button"
+                        class="btn waves-effect waves-light btn-danger float-right">
+                        <i class="fas fa-filter"></i>
+                    </button>
+                </div>
+            </div> -->
+
+            <!-- table -->
+            <div class="table-responsive pt-2" v-if="users.data.length">
+                <table class="table table-hover text-nowrap">
+                    <thead >
+                        <tr>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <user-item-component v-for="user in users.data"
+                            v-bind:user="user"
+                            v-bind:key="user.id"
+                            @loadData="getUsers">
+                        </user-item-component>
+                    </tbody>
+                </table>
+                <pagination :limit="5" :data="users" @pagination-change-page="getUsers"></pagination>
+            </div>
+            <div v-else class="alert alert-warning text-center">
+                    No hay ningún elemento para mostrar
+            </div>
+        </div>
+
+        <div class="card-footer">
+            Footer
+        </div>
+
     </div>
-    <!--   <div class="col-md-8">
-          <h1>Estas en Users</h1>
-          <example-component></example-component>
-      </div> -->
 </template>
 <script>
     import UserItemComponent from './UserItemComponent';
@@ -75,7 +77,7 @@
 
         methods: {
             getUsers(page = 1) {
-                let url = '/api/users?page=' + page;
+                let url = '/cmsapi/users?page=' + page;
                 axios.get(url)
                     .then(response => {
                         this.users = response.data

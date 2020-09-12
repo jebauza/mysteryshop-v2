@@ -77,7 +77,7 @@
         },
         methods:{
             getSurveys(page=1) {
-                let url = '/api/surveys?page=' + page;
+                let url = '/cmsapi/surveys?page=' + page;
 
                 axios.get(url)
                 .then(response => {
