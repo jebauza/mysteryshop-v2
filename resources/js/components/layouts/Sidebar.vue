@@ -21,66 +21,54 @@
             </div>
 
             <!-- Sidebar Menu -->
-            <nav class="mt-2">
+            <nav class="mt-2" id="sidebar_menu">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
         with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <router-link class="nav-link" :to="{name: 'users'}" >
+                        <router-link :to="{path: '/users'}" :class="['nav-link', isActive('/users') ? 'active' : '']">
                             <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Users
-                            </p>
+                            <p>Users</p>
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" :to="{name: 'enterprises'}" >
+                        <router-link :to="{path: '/enterprises'}" :class="['nav-link', isActive('/enterprises') ? 'active' : '']">
                             <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Empresas
-                            </p>
+                            <p>Empresas</p>
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" :to="{name: 'clients'}" >
+                        <router-link :to="{path: '/clients'}" :class="['nav-link', isActive('/clients') ? 'active' : '']">
                             <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Clients
-                            </p>
+                            <p>Clients</p>
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" :to="{name: 'establishments'}" >
+                        <router-link :to="{path: '/establishments'}" :class="['nav-link', isActive('/establishments') ? 'active' : '']">
                             <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Establishments
-                            </p>
+                            <p>Establishments</p>
                         </router-link>
                     </li>
                     <li class="nav-item">
-                    <router-link class="nav-link" :to="{name: 'indicators'}">
+                    <router-link :to="{path: '/indicators'}" :class="['nav-link', isActive('/indicators') ? 'active' : '']">
                         <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Indicators
-                        </p>
+                        <p>Indicators</p>
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" :to="{name: 'indicator_groups'}">
+                    <router-link :to="{path: '/indicator_groups'}" :class="['nav-link', isActive('/indicator_groups') ? 'active' : '']">
                         <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Indicators group
-                        </p>
+                        <p>Indicators group</p>
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" :to="{name: 'surveys'}">
+                    <router-link :to="{path: '/surveys'}" :class="['nav-link', isActive('/surveys') ? 'active' : '']">
                         <i class="nav-icon fas fa-th"></i>
-                        <p>c
-                            Surveys
-                        </p>
+                        <p>Surveys</p>
                     </router-link>
                 </li>
+
+                
 
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
@@ -579,8 +567,20 @@
 
 <script>
 export default {
-    props: ['web_path']
+    props: ['web_path'],
+    methods: {
+        isActive(path_url) {
+            return this.currentPage.indexOf(path_url) === 0;
+        }
+    },
+    computed: {
+        currentPage() {
+            console.log(this.$route.path);
+            return this.$route.path;
+        }
+    },
 }
+
 </script>
 
 <style>
