@@ -1,6 +1,9 @@
 <template>
 
     <div class="card card-info">
+        <!-- Carga de datos -->
+        <div v-if="!loaded" class="overlay"><i class="fas fa-2x fa-sync-alt fa-spin"></i></div>
+
         <div class="card-header">
             <h4 class="card-title font-weight-bold">Lista de usuarios
                 <span v-show="users.total" class="right badge badge-dark">{{ users.total }}</span>
@@ -30,7 +33,7 @@
             </div> -->
 
             <!-- table -->
-            <div class="table-responsive pt-2" v-if="users.data.length">
+            <div class="table-responsive pt-2" v-if="users.data.length || !loaded">
                 <table class="table table-hover text-nowrap">
                     <thead >
                         <tr>
@@ -72,20 +75,26 @@
         data() {
             return {
                 users: {data: []},
+                loaded: false
             }
         },
 
         methods: {
             getUsers(page = 1) {
+                this.loaded = false;
                 let url = '/cmsapi/users?page=' + page;
                 axios.get(url)
                     .then(response => {
                         this.users = response.data
+                        this.loaded = true;
                     })
                     .catch(err => {
                         console.error(err);
                     });
             },
+            refreshUsers() {
+                this.getUsers(this.users.current_page);
+            }
         },
     }
 </script>
