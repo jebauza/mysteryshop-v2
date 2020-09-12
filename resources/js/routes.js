@@ -8,7 +8,12 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: require('./view/Home').default
+            component: require('./view/Home').default,
+            meta: {
+                breadcrumb: [
+                    { name: 'Home' }
+                ]
+            }
         },
         {
             path: '/enterprises',
@@ -18,12 +23,24 @@ export default new Router({
         {
             path: '/users',
             name: 'users',
-            component: require('./components/users/UsersComponent').default
+            component: require('./components/users/UsersComponent').default,
+            meta: {
+                breadcrumb: [
+                    { name: 'Home', link: '/' },
+                    { name: 'Usuarios' }
+                ]
+            }
         },
         {
             path: '/clients',
             name: 'clients',
-            component: require('./components/clients/ClientsComponent').default
+            component: require('./components/clients/ClientsComponent').default,
+            meta: {
+                breadcrumb: [
+                    { name: 'Home', link: '/' },
+                    { name: 'Clientes' }
+                ]
+            }
         },
         {
             path: '/establishments',

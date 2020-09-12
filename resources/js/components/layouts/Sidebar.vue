@@ -68,7 +68,7 @@
                     </router-link>
                 </li>
 
-                
+
 
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
@@ -575,7 +575,6 @@ export default {
     },
     computed: {
         currentPage() {
-            console.log(this.$route.path);
             return this.$route.path;
         }
     },
