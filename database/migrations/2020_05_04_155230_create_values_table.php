@@ -20,7 +20,9 @@ class CreateValuesTable extends Migration
             $table->unsignedBigInteger('indicator_id');
             $table->foreign('indicator_id')
                 ->references('id')
-                ->on('indicators');
+                ->on('indicators')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -17,7 +17,8 @@ class AddEnterpriseIdToUsersTable extends Migration
             $table->unsignedBigInteger('enterprise_id')->nullable()->after('id');
             $table->foreign('enterprise_id')
                 ->references('id')
-                ->on('enterprises');
+                ->on('enterprises')
+                ->onDelete('cascade');
         });
     }
 

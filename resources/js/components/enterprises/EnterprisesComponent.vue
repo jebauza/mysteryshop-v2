@@ -4,6 +4,7 @@
             <div class="card">
 
                 <div class="card-header">
+                    <h3 class="card-title">Enterprises</h3>
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control float-right"

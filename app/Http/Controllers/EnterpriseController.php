@@ -65,12 +65,13 @@ class EnterpriseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Enterprise $enterprises
+     * @param int $enterprises
      * @return Response
      * @throws Exception
      */
-    public function destroy(Enterprise $enterprises)
+    public function destroy( $id)
     {
-       return new Response($enterprises->delete());
+        $enterprise=Enterprise::findOrFail($id);
+        return new Response($enterprise->delete());
     }
 }

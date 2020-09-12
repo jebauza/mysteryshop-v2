@@ -18,7 +18,7 @@ class CreateEstablishmentEvaluationsTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->text('comment');
-            $table->string('employee_name');
+            $table->string('employee_name',255)->nullable();
             $table->unsignedBigInteger('establishment_id');
             $table->foreign('establishment_id')
                 ->references('id')

@@ -17,14 +17,16 @@ class CreateEstablishmentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->unsignedBigInteger('establishment_type_id');
+            $table->unsignedBigInteger('establishment_type_id')->nullable();
             $table->foreign('establishment_type_id')
                 ->references('id')
-                ->on('establishment_types');
-            $table->unsignedBigInteger('client_id');
+                ->on('establishment_types')
+                ->onDelete('set null');
+            $table->unsignedBigInteger('client_id')->nullable();
             $table->foreign('client_id')
                 ->references('id')
-                ->on('clients');
+                ->on('clients')
+                ->onDelete('set null');
             $table->timestamps();
         });
     }
