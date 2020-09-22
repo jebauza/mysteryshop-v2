@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="modalFormUser">
+    <div class="modal fade" id="modalFormEnterprise">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -23,22 +23,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Surname</label>
+                                <label class="col-sm-2 control-label">Address</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="SurName"
-                                           :class="errors.surname ? 'is-invalid':''"
-                                           v-model="form.surname">
-                                    <span v-if="errors.surname" class="invalid-feedback">{{errors.surname[0]}}</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Email</label>
-
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" :class="errors.email ? 'is-invalid':''"
-                                           placeholder="Email" v-model="form.email">
-                                    <span v-if="errors.email" class="invalid-feedback">{{errors.email[0]}}</span>
+                                    <input type="text" class="form-control" placeholder="Address"
+                                           :class="errors.address ? 'is-invalid':''"
+                                           v-model="form.address">
+                                    <span v-if="errors.address" class="invalid-feedback">{{errors.address[0]}}</span>
                                 </div>
                             </div>
                         </div>
@@ -46,8 +37,8 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" @click="closeForm">Cancelar</button>
-                    <a v-if="action==='update'" @click="updateUser" class="btn btn-primary">Guardar</a>
-                    <a v-else @click="createUser" class="btn btn-primary">Guardar</a>
+                    <a v-if="action==='update'" @click="updateEnterprise" class="btn btn-primary">Guardar</a>
+                    <a v-else @click="createEnterprise" class="btn btn-primary">Guardar</a>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -63,7 +54,7 @@
 
 
     export default {
-        name: "UserFormComponent",
+        name: "EnterpriseFormComponent",
         data() {
             return {
                 errorMessage: '',
@@ -72,29 +63,27 @@
                 form: {
                     id: '',
                     name: '',
-                    surname: '',
-                    email: ''
+                    address: '',
                 },
                 errors: []
             }
         },
         methods: {
-            showForm(action, user = null) {
+            showForm(action, enterprise = null) {
                 this.clearForm();
                 this.action = action;
                 this.title = action === 'update' ? 'Edit' : 'Create';
-                if (user) {
+                if (enterprise) {
                     this.form = {
-                        id: user.id,
-                        name: user.name,
-                        surname: user.surname,
-                        email: user.email
+                        id: enterprise.id,
+                        name: enterprise.name,
+                        address: enterprise.address,
                     }
                 }
-                $('#modalFormUser').modal({backdrop: 'static', keyboard: false,'show':true})
+                $('#modalFormEnterprise').modal({backdrop: 'static', keyboard: false,'show':true})
             },
-            createUser() {
-                let url = `cmsapi/users`;
+            createEnterprise() {
+                let url = `cmsapi/enterprises`;
                 axios.post(url, this.form)
                     .then(response => {
                         this.closeForm();
@@ -106,12 +95,12 @@
                         this.errors = error.response.data.errors;
                     });
             },
-            updateUser() {
-                let url = `cmsapi/users/${this.form.id}`;
+            updateEnterprise() {
+                let url = `cmsapi/enterprises/${this.form.id}`;
                 axios.put(url, this.form)
                     .then(response => {
                         this.closeForm();
-                        this.$alert("The element have been updated", "Information", "success")
+                        this.$alert("the element have been updated", "Information", "success")
                         this.$emit('loadData')
                     })
                     .catch(error => {
@@ -125,14 +114,13 @@
                 this.form = {
                     id: '',
                     name: '',
-                    surname: '',
-                    email: ''
+                    address: '',
                 };
                 this.errors = []
             },
             closeForm() {
                 this.clearForm()
-                $('#modalFormUser').modal('hide');
+                $('#modalFormEnterprise').modal('hide');
             }
         }
     }

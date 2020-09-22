@@ -10,13 +10,14 @@ use App\Http\Resources\UserResource;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Psy\Util\Str;
 
 class UserController extends Controller
 {
     /**
      * @return JsonResource
      */
-    public function index()
+    public function index(Request $request)
     {
         return UserResource::collection(User::orderBy('id', 'DESC')->paginate());
     }
@@ -29,7 +30,12 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $user = User::create($request->all());
+        $user =  new User;
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->email = $request->email;
+        $user->password = bcrypt('my-secret-password');;
+        $user->save();
 
         return new UserResource($user);
     }

@@ -4,8 +4,8 @@
         <td>{{user.surname}}</td>
         <td>{{user.email}}</td>
         <td>
-            <a href="#"><i class="text-primary fa fa-eye"></i></a>
-            <a class="text-success fa fa-pen"></a>
+            <a href="#"><i class="text-primary fa fa-eye" @click="$emit('details')"></i></a>
+            <a class="text-success fa fa-pen" @click="$emit('updateUser')"></a>
             <a class="text-danger fa fa-trash" @click="deleteUser(user.id)" ></a>
         </td>
     </tr>

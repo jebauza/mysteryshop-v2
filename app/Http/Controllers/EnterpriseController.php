@@ -57,7 +57,7 @@ class EnterpriseController extends Controller
      */
     public function update(UpdateEnterpriseResquest $request, Enterprise $enterprises)
     {
-        $enterprises->fill($request->all())->save();
+        $enterprises->fill($request->all());
 
         return new EnterpriseResource($enterprises);
     }

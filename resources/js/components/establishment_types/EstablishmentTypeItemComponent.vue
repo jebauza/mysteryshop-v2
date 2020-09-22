@@ -1,27 +1,26 @@
 <template>
     <tr>
-        <td>{{enterprise.name}}</td>
-        <td>{{enterprise.address}}</td>
+        <td>{{establishment_type.name}}</td>
         <td>
             <a href="#"><i class="text-primary fa fa-eye" @click="$emit('details')"></i></a>
-            <a class="text-success fa fa-pen" @click="$emit('updateEnterprise')"></a>
-            <a class="text-danger fa fa-trash" @click="deleteEnterprise(enterprise.id)" ></a>
+            <a class="text-success fa fa-pen" @click="$emit('updateEstablishmentType')"></a>
+            <a class="text-danger fa fa-trash" @click="deleteEstablishmentType(establishment_type.id)" ></a>
         </td>
     </tr>
 </template>
 
 <script>
     export default {
-        name: "EnterpriseItemComponent",
-        props: ['enterprise'],
+        name: "EstablishmentTypeItemComponent",
+        props: ['establishment_type'],
         data(){
             return {
             }
         },
         methods:{
-            deleteEnterprise(item) {
+            deleteEstablishmentType(item) {
                 this.$confirm("Are you sure do you want delete this item?","Question","question").then(() => {
-                    let url = `/cmsapi/enterprises/${item}`;
+                    let url = `/cmsapi/establishment_types/${item}`;
                     axios.delete(url)
                         .then(response => {
                             this.$alert("the element have been removed","Information","success" )

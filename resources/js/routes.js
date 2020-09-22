@@ -22,7 +22,7 @@ export default new Router({
             meta: {
                 breadcrumb: [
                     { name: 'Home', link: '/' },
-                    { name: 'Empresas' }
+                    { name: 'Enterprises' }
                 ]
             }
         },
@@ -33,7 +33,7 @@ export default new Router({
             meta: {
                 breadcrumb: [
                     { name: 'Home', link: '/' },
-                    { name: 'Usuarios' }
+                    { name: 'Users' }
                 ]
             }
         },
@@ -44,7 +44,7 @@ export default new Router({
             meta: {
                 breadcrumb: [
                     { name: 'Home', link: '/' },
-                    { name: 'Clientes' }
+                    { name: 'Clients' }
                 ]
             }
         },
@@ -55,7 +55,17 @@ export default new Router({
             meta: {
                 breadcrumb: [
                     { name: 'Home', link: '/' },
-                    { name: 'Establecimientos' }
+                    { name: 'Establishments' }
+                ]
+            }
+        }, {
+            path: '/establishment-types',
+            name: 'establishments_types',
+            component: require('./components/establishment_types/EstablishmentTypesComponent').default,
+            meta: {
+                breadcrumb: [
+                    { name: 'Home', link: '/' },
+                    { name: 'Establishments types' }
                 ]
             }
         },
@@ -66,7 +76,7 @@ export default new Router({
             meta: {
                 breadcrumb: [
                     { name: 'Home', link: '/' },
-                    { name: 'Indicadores' }
+                    { name: 'Indicators' }
                 ]
             }
         },
@@ -77,7 +87,7 @@ export default new Router({
             meta: {
                 breadcrumb: [
                     { name: 'Home', link: '/' },
-                    { name: 'Grupos indicadores' }
+                    { name: 'Indicator groups' }
                 ]
             }
         },
@@ -88,7 +98,7 @@ export default new Router({
             meta: {
                 breadcrumb: [
                     { name: 'Home', link: '/' },
-                    { name: 'Encuestas' }
+                    { name: 'Surveys' }
                 ]
             }
         },

@@ -26,43 +26,49 @@
                     <li class="nav-item">
                         <router-link :to="{path: '/users'}" :class="['nav-link', isActive('/users') ? 'active' : '']">
                             <i class="nav-icon fas fa-users"></i>
-                            <p>Usuarios</p>
+                            <p>Users</p>
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{path: '/enterprises'}" :class="['nav-link', isActive('/enterprises') ? 'active' : '']">
                             <i class="nav-icon fas fa-building"></i>
-                            <p>Empresas</p>
+                            <p>Enterprises</p>
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{path: '/clients'}" :class="['nav-link', isActive('/clients') ? 'active' : '']">
                             <i class="nav-icon fas fa-user-tie"></i>
-                            <p>Clientes</p>
+                            <p>Clients</p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link :to="{path: '/establishment-types'}" :class="['nav-link', isActive('/establishment-types') ? 'active' : '']">
+                            <i class="nav-icon fas fa-store"></i>
+                            <p>Establishment types</p>
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{path: '/establishments'}" :class="['nav-link', isActive('/establishments') ? 'active' : '']">
                             <i class="nav-icon fas fa-store"></i>
-                            <p>Establecimientos</p>
+                            <p>Establishment</p>
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{path: '/indicators'}" :class="['nav-link', isActive('/indicators') ? 'active' : '']">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>Indicadores</p>
+                            <p>Indicators</p>
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{path: '/group/indicators'}" :class="['nav-link', isActive('/group/indicators') ? 'active' : '']">
                             <i class="nav-icon fas fa-layer-group"></i>
-                            <p>Grupos Indicadores</p>
+                            <p>Indicators groups</p>
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link :to="{path: '/surveys'}" :class="['nav-link', isActive('/surveys') ? 'active' : '']">
                             <i class="nav-icon fas fa-tasks"></i>
-                            <p>Encuestas</p>
+                            <p>Surveys</p>
                         </router-link>
                     </li>
 

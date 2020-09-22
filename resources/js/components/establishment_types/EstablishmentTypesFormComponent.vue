@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="modalFormUser">
+    <div class="modal fade" id="modalFormEstablishmenType">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -22,32 +22,13 @@
                                     <span v-if="errors.name" class="invalid-feedback">{{errors.name[0]}}</span>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Surname</label>
-
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" placeholder="SurName"
-                                           :class="errors.surname ? 'is-invalid':''"
-                                           v-model="form.surname">
-                                    <span v-if="errors.surname" class="invalid-feedback">{{errors.surname[0]}}</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Email</label>
-
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" :class="errors.email ? 'is-invalid':''"
-                                           placeholder="Email" v-model="form.email">
-                                    <span v-if="errors.email" class="invalid-feedback">{{errors.email[0]}}</span>
-                                </div>
-                            </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" @click="closeForm">Cancelar</button>
-                    <a v-if="action==='update'" @click="updateUser" class="btn btn-primary">Guardar</a>
-                    <a v-else @click="createUser" class="btn btn-primary">Guardar</a>
+                    <a v-if="action==='update'" @click="updateEstablishmenType" class="btn btn-primary">Guardar</a>
+                    <a v-else @click="createEstablishmenType" class="btn btn-primary">Guardar</a>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -63,7 +44,7 @@
 
 
     export default {
-        name: "UserFormComponent",
+        name: "EstablishmenTypeFormComponent",
         data() {
             return {
                 errorMessage: '',
@@ -72,29 +53,25 @@
                 form: {
                     id: '',
                     name: '',
-                    surname: '',
-                    email: ''
                 },
                 errors: []
             }
         },
         methods: {
-            showForm(action, user = null) {
+            showForm(action, establishment_type = null) {
                 this.clearForm();
                 this.action = action;
                 this.title = action === 'update' ? 'Edit' : 'Create';
-                if (user) {
+                if (establishment_type) {
                     this.form = {
-                        id: user.id,
-                        name: user.name,
-                        surname: user.surname,
-                        email: user.email
+                        id: establishment_type.id,
+                        name: establishment_type.name,
                     }
                 }
-                $('#modalFormUser').modal({backdrop: 'static', keyboard: false,'show':true})
+                $('#modalFormEstablishmenType').modal({backdrop: 'static', keyboard: false,'show':true})
             },
-            createUser() {
-                let url = `cmsapi/users`;
+            createEstablishmenType() {
+                let url = `cmsapi/establishment_types`;
                 axios.post(url, this.form)
                     .then(response => {
                         this.closeForm();
@@ -106,12 +83,12 @@
                         this.errors = error.response.data.errors;
                     });
             },
-            updateUser() {
-                let url = `cmsapi/users/${this.form.id}`;
+            updateEstablishmenType() {
+                let url = `cmsapi/establishment_types/${this.form.id}`;
                 axios.put(url, this.form)
                     .then(response => {
                         this.closeForm();
-                        this.$alert("The element have been updated", "Information", "success")
+                        this.$alert("the element have been updated", "Information", "success")
                         this.$emit('loadData')
                     })
                     .catch(error => {
@@ -125,14 +102,12 @@
                 this.form = {
                     id: '',
                     name: '',
-                    surname: '',
-                    email: ''
                 };
                 this.errors = []
             },
             closeForm() {
                 this.clearForm()
-                $('#modalFormUser').modal('hide');
+                $('#modalFormEstablishmenType').modal('hide');
             }
         }
     }
