@@ -27,8 +27,8 @@ class StoreEstablishmentRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
-            'establishment_type_id' => 'required|exists:establishment_types,id',
-            'client_id' => 'required|exists:clients,id'
+            'establishment_type_id' => 'nullable|exists:establishment_types,id',
+            'client_id' => 'nullable|exists:clients,id'
         ];
     }
 }
