@@ -1,8 +1,17 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap';
+
+// Font Awesome
+@import '../../vendor/almasaeed2010/adminlte/plugins/fontawesome-free/css/all.min.css';
+// Ionicons
+@import url('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
+// overlayScrollbars AdminLTE
+@import '../../vendor/almasaeed2010/adminlte/dist/css/adminlte.css';
+// Google Font: Source Sans Pro
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700');

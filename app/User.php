@@ -2,13 +2,18 @@
 
 namespace App;
 
+use App\Models\Enterprise;
+use App\Models\DepartmentEvaluation;
+use Spatie\Permission\Traits\HasRoles;
+use App\Models\EstablishmentEvaluation;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'enterprise_id', 'name', 'surname', 'email', 'password',
     ];
 
     /**
@@ -36,4 +41,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function enterprise()
+    {
+        return $this->belongsTo(Enterprise::class);
+    }
+
+    public function establishmentEvaluations()
+    {
+        return $this->hasMany(EstablishmentEvaluation::class, 'user_id', 'id');
+    }
+
+    public function departmentEvaluations()
+    {
+        return $this->hasMany(DepartmentEvaluation::class, 'user_id', 'id');
+    }
 }

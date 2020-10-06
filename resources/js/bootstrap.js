@@ -11,6 +11,11 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+
+    //require('overlayscrollbars');
+    //require('../../vendor/almasaeed2010/adminlte/dist/js/adminlte');
+    //require('../../vendor/almasaeed2010/adminlte/dist/js/demo');
+
 } catch (e) {}
 
 /**
@@ -37,5 +42,5 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     broadcaster: 'pusher',
 //     key: process.env.MIX_PUSHER_APP_KEY,
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     encrypted: true
+//     forceTLS: true
 // });
